@@ -97,34 +97,31 @@
       background: var(--bg-white);
     }
 
-    /* Road lines signature element */
-    .hero::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 60%;
-      background: repeating-linear-gradient(
-        to bottom,
-        var(--orange) 0px,
-        var(--orange) 40px,
-        transparent 40px,
-        transparent 80px
-      );
-      opacity: 0.15;
-    }
-
-    /* Subtle grid texture */
-    .hero::after {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(200,90,26,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,90,26,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.96) 0%,
+        rgba(255,255,255,0.85) 40%,
+        rgba(255,255,255,0.3) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero > *:not(.hero-bg):not(.hero-overlay) {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-eyebrow {
@@ -489,6 +486,8 @@
 
   <!-- HERO -->
   <section class="hero">
+    <img class="hero-bg" src="images/truck-sunset.jpg" alt="BradLeigh Solutions truck at sunset with full load" />
+    <div class="hero-overlay"></div>
     <p class="hero-eyebrow">Canada &amp; USA Vehicle Transport</p>
     <h1 class="hero-headline">
       Moving<br />
