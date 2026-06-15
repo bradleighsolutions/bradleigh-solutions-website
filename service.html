@@ -84,6 +84,19 @@
     }
     .nav-cta:hover { background: var(--orange-lt) !important; }
 
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark-text); border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 99; padding: 16px 24px 24px; flex-direction: column; gap: 4px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--mid-text); text-decoration: none; font-size: 1rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu .mobile-cta { background: var(--orange); color: var(--white) !important; text-align: center; padding: 14px; border-radius: 3px; margin-top: 8px; border-bottom: none !important; font-weight: 700 !important; }
+
     /* ── PAGE HERO WITH PHOTO ── */
     .page-hero {
       margin-top: 72px;
@@ -508,13 +521,13 @@
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       .page-hero { height: 320px; }
       .page-hero-content { padding: 32px 24px; }
       .service-content { padding: 40px 24px; }
       .how { padding: 60px 24px; }
       .how-steps { grid-template-columns: 1fr; }
       .cta-strip { padding: 60px 24px; flex-direction: column; align-items: flex-start; }
-      .coming-soon { padding: 60px 24px; }
       footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
       .footer-info { text-align: left; }
     }
@@ -533,11 +546,22 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="service.html" class="active">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="service.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Get a Quote</a>
+  </div>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
@@ -668,5 +692,19 @@
     </div>
   </footer>
 
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  </script>
 </body>
 </html>
