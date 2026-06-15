@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | BradLeigh Solutions Ltd.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:    #C85A1A;
+      --orange-lt: #E06820;
+      --orange-bg: #FDF1EB;
+      --dark-text: #1A1A1A;
+      --mid-text:  #4A4A4A;
+      --light-text:#767676;
+      --border:    #E8E4E0;
+      --bg-white:  #FFFFFF;
+      --bg-light:  #F7F5F3;
+      --white:     #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-white);
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span.brad { color: var(--orange); }
+    .nav-logo span.leigh { color: var(--dark-text); font-style: italic; }
+    .nav-logo span.ltd { color: var(--light-text); font-weight: 400; font-size: 1rem; margin-left: 4px; }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--mid-text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 3px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-lt) !important; }
+
+    /* ── PAGE HERO WITH PHOTO ── */
+    .page-hero {
+      margin-top: 72px;
+      position: relative;
+      height: 460px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .page-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,10,10,0.85) 0%,
+        rgba(10,10,10,0.3) 60%,
+        transparent 100%
+      );
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px;
+      width: 100%;
+    }
+
+    .page-hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .page-hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+      max-width: 700px;
+    }
+
+    /* ── SERVICE BLOCKS ── */
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+
+    .service-photo {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s ease;
+    }
+
+    .service-photo:hover img { transform: scale(1.03); }
+
+    .service-content {
+      padding: 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--bg-white);
+    }
+
+    .service-block:nth-child(even) .service-content {
+      background: var(--bg-light);
+    }
+
+    .service-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .service-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--dark-text);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--mid-text);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: var(--dark-text);
+    }
+
+    .service-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+    .btn-outline:hover { background: var(--orange); color: var(--white); }
+
+    /* ── COMING SOON ── */
+    .coming-soon {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      background: var(--orange-bg);
+      border: 1px solid rgba(200,90,26,0.3);
+      color: var(--orange);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .coming-soon h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--dark-text);
+      margin-bottom: 16px;
+    }
+
+    .coming-soon p {
+      font-size: 0.95rem;
+      color: var(--mid-text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .coming-soon-visual {
+      background: var(--bg-white);
+      border: 2px dashed var(--border);
+      border-radius: 4px;
+      padding: 48px 36px;
+      text-align: center;
+    }
+
+    .coming-soon-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .coming-soon-visual h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--dark-text);
+      margin-bottom: 8px;
+    }
+
+    .coming-soon-visual p {
+      font-size: 0.85rem;
+      color: var(--light-text);
+      margin-bottom: 0;
+    }
+
+    .launch-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-top: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 48px;
+      background: var(--dark-text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.08;
+    }
+
+    .how-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .how-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .how-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 60px;
+      max-width: 500px;
+      line-height: 1.05;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .how-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 32px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .how-step:hover { background: rgba(255,255,255,0.07); }
+
+    .step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.6;
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 80px 48px;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .cta-strip-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 6px;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--orange);
+      padding: 16px 40px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .footer-logo span.brad { color: var(--orange); }
+    .footer-logo span.leigh { color: var(--dark-text); font-style: italic; }
+
+    .footer-info {
+      font-size: 0.8rem;
+      color: var(--light-text);
+      line-height: 1.8;
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .service-block { grid-template-columns: 1fr; min-height: auto; }
+      .service-block.reverse { direction: ltr; }
+      .service-photo { height: 300px; }
+      .how-steps { grid-template-columns: 1fr 1fr; }
+      .coming-soon { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-hero { height: 320px; }
+      .page-hero-content { padding: 32px 24px; }
+      .service-content { padding: 40px 24px; }
+      .how { padding: 60px 24px; }
+      .how-steps { grid-template-columns: 1fr; }
+      .cta-strip { padding: 60px 24px; flex-direction: column; align-items: flex-start; }
+      .coming-soon { padding: 60px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <span class="brad">Brad</span><span class="leigh">Leigh</span><span class="ltd">Solutions Ltd.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <img src="images/truck-loaded-dusk.jpg" alt="BradLeigh Solutions loaded car hauler at dusk" />
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">What We Do</p>
+      <h1 class="page-hero-title">Professional Vehicle Transport.<br />Canada &amp; USA.</h1>
+    </div>
+  </div>
+
+  <!-- SERVICE 1 - CANADA -->
+  <div class="service-block">
+    <div class="service-photo">
+      <img src="images/truck-mountains.jpg" alt="BradLeigh car hauler in the Canadian Rockies" />
+    </div>
+    <div class="service-content">
+      <div class="service-number">01</div>
+      <p class="service-eyebrow">Domestic Transport</p>
+      <h2 class="service-title">Vehicle Transport Across Canada</h2>
+      <p class="service-desc">From coast to coast, we move vehicles safely and efficiently across all Canadian provinces. Whether you are a dealership restocking inventory or a fleet operator relocating vehicles, we have the equipment and experience to get it done right.</p>
+      <ul class="service-list">
+        <li>Nationwide coverage across all 10 provinces</li>
+        <li>Dealership and fleet transport specialists</li>
+        <li>Multi-vehicle loads up to 7+ units per run</li>
+        <li>Tracked and managed through Super Dispatch</li>
+        <li>Experienced drivers who know the routes</li>
+      </ul>
+      <a href="contact.html" class="btn-outline">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- SERVICE 2 - CROSS BORDER -->
+  <div class="service-block reverse">
+    <div class="service-photo">
+      <img src="images/truck-black-sunny.jpg" alt="BradLeigh black car hauler cross-border transport" />
+    </div>
+    <div class="service-content">
+      <div class="service-number">02</div>
+      <p class="service-eyebrow">Cross-Border Transport</p>
+      <h2 class="service-title">Vehicle Transport Into the USA</h2>
+      <p class="service-desc">Licensed and fully compliant for cross-border transport into the United States. We handle the paperwork, the border requirements, and the coordination so you do not have to. Just tell us where the vehicles need to go.</p>
+      <ul class="service-list">
+        <li>USDOT certified carrier (No. 2834168)</li>
+        <li>MC licensed interstate transport (MC-947908)</li>
+        <li>Full border documentation handled by our team</li>
+        <li>Green Eye Manifest compliant border processing</li>
+        <li>Reliable cross-border scheduling and communication</li>
+      </ul>
+      <a href="contact.html" class="btn-outline">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- SERVICE 3 - SERVICE BODIES -->
+  <div class="service-block">
+    <div class="service-photo">
+      <img src="images/truck-sunset.jpg" alt="BradLeigh truck at sunset with full load" />
+    </div>
+    <div class="service-content">
+      <div class="service-number">03</div>
+      <p class="service-eyebrow">Specialized Hauling</p>
+      <h2 class="service-title">Service Bodies to the USA</h2>
+      <p class="service-desc">We specialize in the cross-border transport of service bodies into the United States. Properly secured, border-ready, and delivered on time. Our team understands the specific requirements for this type of load and handles every detail professionally.</p>
+      <ul class="service-list">
+        <li>Specialized securement for service body loads</li>
+        <li>Full US border compliance and documentation</li>
+        <li>Experienced in oversized and specialty equipment</li>
+        <li>Direct communication throughout the haul</li>
+      </ul>
+      <a href="contact.html" class="btn-outline">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <img class="how-bg-img" src="images/truck-sunset.jpg" alt="" aria-hidden="true" />
+    <div class="how-inner">
+      <p class="how-eyebrow">Simple Process</p>
+      <h2 class="how-title">How It Works</h2>
+      <div class="how-steps">
+
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <div class="step-title">Request a Quote</div>
+          <p class="step-desc">Fill out our quick quote form or email us directly at info@bradleigh.ca. Tell us how many vehicles, where they are going, and when you need them moved.</p>
+        </div>
+
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <div class="step-title">We Confirm the Load</div>
+          <p class="step-desc">Our dispatch team reviews your request and gets back to you fast with availability, pricing, and pickup details. No runaround, no waiting days for a response.</p>
+        </div>
+
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <div class="step-title">Pickup and Transport</div>
+          <p class="step-desc">Our driver picks up your vehicles on the agreed date. Every load is managed through Super Dispatch so there is full documentation and accountability from start to finish.</p>
+        </div>
+
+        <div class="how-step">
+          <div class="step-num">04</div>
+          <div class="step-title">Delivered on Time</div>
+          <p class="step-desc">Your vehicles arrive at the destination safely and on schedule. We stay in communication throughout the haul and are always reachable if anything comes up along the way.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div>
+      <div class="cta-strip-title">Ready to Book a Load?</div>
+      <div class="cta-strip-sub">Get a fast, no-obligation quote today.</div>
+    </div>
+    <a href="contact.html" class="btn-white">Get a Quote</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-logo" href="index.html">
+      <span class="brad">Brad</span><span class="leigh">Leigh</span>
+    </a>
+    <div class="footer-info">
+      &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
+      USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
+      bradleighsolutions.com
+    </div>
+  </footer>
+
+</body>
+</html>
