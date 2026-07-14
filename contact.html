@@ -7,11 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --orange:    #C85A1A;
-      --orange-lt: #E06820;
-      --orange-bg: #FDF1EB;
+      --red:       #B91C1C;
+      --red-lt:    #DC2626;
+      --red-bg:    #FEF2F2;
       --dark-text: #1A1A1A;
       --mid-text:  #4A4A4A;
       --light-text:#767676;
@@ -20,70 +19,27 @@
       --bg-light:  #F7F5F3;
       --white:     #FFFFFF;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-white); color: var(--dark-text); line-height: 1.6; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-white);
-      color: var(--dark-text);
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 72px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-line1 { display: flex; align-items: baseline; }
+    .logo-brad { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; color: #1A1A1A; letter-spacing: 0.01em; text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC; }
+    .logo-leigh { font-family: 'Barlow Condensed', sans-serif; font-size: 1.75rem; font-weight: 400; color: #6B6B6B; font-style: italic; letter-spacing: 0.01em; }
+    .logo-solutions { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: #555555; font-style: italic; letter-spacing: 0.1em; margin-top: 2px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--mid-text); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta { background: var(--red); color: var(--white) !important; padding: 10px 22px; border-radius: 3px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--red-lt) !important; }
 
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      text-decoration: none;
-    }
-    .nav-logo span.brad { color: var(--orange); }
-    .nav-logo span.leigh { color: var(--dark-text); font-style: italic; }
-    .nav-logo span.ltd { color: var(--light-text); font-weight: 400; font-size: 1rem; margin-left: 4px; }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--mid-text);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--orange); }
-
-    .nav-cta {
-      background: var(--orange);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 3px;
-      font-weight: 600 !important;
-      transition: background 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--orange-lt) !important; }
-
-    /* ── HAMBURGER ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark-text); border-radius: 2px; transition: all 0.3s ease; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -93,330 +49,63 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: var(--mid-text); text-decoration: none; font-size: 1rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--orange); }
-    .mobile-menu .mobile-cta { background: var(--orange); color: var(--white) !important; text-align: center; padding: 14px; border-radius: 3px; margin-top: 8px; border-bottom: none !important; font-weight: 700 !important; }
+    .mobile-menu a:hover { color: var(--red); }
+    .mobile-menu .mobile-cta { background: var(--red); color: var(--white) !important; text-align: center; padding: 14px; border-radius: 3px; margin-top: 8px; border-bottom: none !important; font-weight: 700 !important; }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 140px 48px 60px;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border);
-    }
+    .page-header { padding: 120px 48px 40px; background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .page-header-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .page-header-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--dark-text); }
+    .page-header-sub { margin-top: 16px; font-size: 1rem; color: var(--mid-text); max-width: 500px; line-height: 1.7; }
 
-    .page-header-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
+    .contact-layout { display: grid; grid-template-columns: 1fr 420px; gap: 0; min-height: 70vh; }
+    .form-section { padding: 64px 48px; background: var(--bg-white); }
+    .form-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; color: var(--dark-text); margin-bottom: 8px; }
+    .form-section p { font-size: 0.9rem; color: var(--mid-text); margin-bottom: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-text); }
+    label .required { color: var(--red); margin-left: 2px; }
+    input, select, textarea { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--dark-text); background: var(--bg-white); border: 1px solid var(--border); border-radius: 4px; padding: 12px 16px; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; appearance: none; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(185,28,28,0.08); }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A4A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+    textarea { resize: vertical; min-height: 110px; }
+    .form-divider { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); padding: 24px 0 16px; border-top: 1px solid var(--border); margin-top: 8px; }
+    .btn-submit { background: var(--red); color: var(--white); padding: 16px 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 3px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 8px; width: 100%; }
+    .btn-submit:hover { background: var(--red-lt); transform: translateY(-1px); }
+    .form-note { font-size: 0.78rem; color: var(--light-text); margin-top: 12px; text-align: center; }
+    .success-msg { display: none; background: #EDF7ED; border: 1px solid #A8D5A8; border-radius: 4px; padding: 20px 24px; margin-top: 20px; font-size: 0.9rem; color: #2E6B2E; }
 
-    .page-header-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1;
-      color: var(--dark-text);
-    }
-
-    .page-header-sub {
-      margin-top: 16px;
-      font-size: 1rem;
-      color: var(--mid-text);
-      max-width: 500px;
-    }
-
-    /* ── MAIN LAYOUT ── */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 0;
-      min-height: 70vh;
-    }
-
-    /* ── FORM SECTION ── */
-    .form-section {
-      padding: 64px 48px;
-      background: var(--bg-white);
-    }
-
-    .form-section h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--dark-text);
-      margin-bottom: 8px;
-    }
-
-    .form-section p {
-      font-size: 0.9rem;
-      color: var(--mid-text);
-      margin-bottom: 36px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .form-group.full { grid-column: 1 / -1; }
-
-    label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mid-text);
-    }
-
-    label .required { color: var(--orange); margin-left: 2px; }
-
-    input, select, textarea {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      color: var(--dark-text);
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 12px 16px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      width: 100%;
-      appearance: none;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(200,90,26,0.08);
-    }
-
-    select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A4A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
-      cursor: pointer;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .form-divider {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--orange);
-      padding: 24px 0 16px;
-      border-top: 1px solid var(--border);
-      margin-top: 8px;
-    }
-
-    .btn-submit {
-      background: var(--orange);
-      color: var(--white);
-      padding: 16px 40px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      margin-top: 8px;
-      width: 100%;
-    }
-    .btn-submit:hover { background: var(--orange-lt); transform: translateY(-1px); }
-
-    .form-note {
-      font-size: 0.78rem;
-      color: var(--light-text);
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    /* Success message */
-    .success-msg {
-      display: none;
-      background: #EDF7ED;
-      border: 1px solid #A8D5A8;
-      border-radius: 4px;
-      padding: 20px 24px;
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #2E6B2E;
-    }
-
-    /* ── SIDEBAR ── */
-    .contact-sidebar {
-      background: var(--bg-light);
-      border-left: 1px solid var(--border);
-      padding: 64px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .sidebar-block h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--dark-text);
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--orange);
-      display: inline-block;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .contact-item-icon {
-      font-size: 1.1rem;
-      margin-top: 2px;
-      min-width: 20px;
-    }
-
-    .contact-item-text {
-      font-size: 0.875rem;
-      color: var(--mid-text);
-      line-height: 1.6;
-    }
-
-    .contact-item-text strong {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--light-text);
-      margin-bottom: 2px;
-    }
-
-    .contact-item-text a {
-      color: var(--orange);
-      text-decoration: none;
-    }
+    .contact-sidebar { background: var(--bg-light); border-left: 1px solid var(--border); padding: 64px 40px; display: flex; flex-direction: column; gap: 40px; }
+    .sidebar-block h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark-text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--red); display: inline-block; }
+    .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .contact-item-icon { font-size: 1.1rem; margin-top: 2px; min-width: 20px; }
+    .contact-item-text { font-size: 0.875rem; color: var(--mid-text); line-height: 1.6; }
+    .contact-item-text strong { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); margin-bottom: 2px; }
+    .contact-item-text a { color: var(--red); text-decoration: none; }
     .contact-item-text a:hover { text-decoration: underline; }
+    .credential-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .credential-list li { font-size: 0.85rem; color: var(--mid-text); display: flex; align-items: center; gap: 10px; }
+    .credential-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; min-width: 6px; background: var(--red); border-radius: 50%; }
+    .response-badge { background: var(--red-bg); border: 1px solid rgba(185,28,28,0.2); border-radius: 4px; padding: 16px 20px; font-size: 0.85rem; color: var(--red); font-weight: 500; display: flex; align-items: center; gap: 10px; }
 
-    .credential-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    footer { padding: 40px 48px; background: var(--bg-light); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--border); }
+    .footer-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1.1; }
+    .footer-logo .logo-brad { font-size: 2rem; }
+    .footer-logo .logo-leigh { font-size: 1.75rem; }
+    .footer-logo .logo-solutions { font-size: 0.95rem; color: #555555; font-weight: 600; }
+    .footer-info { font-size: 0.8rem; color: var(--light-text); line-height: 1.8; text-align: right; }
 
-    .credential-list li {
-      font-size: 0.85rem;
-      color: var(--mid-text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .credential-list li::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      min-width: 6px;
-      background: var(--orange);
-      border-radius: 50%;
-    }
-
-    .response-badge {
-      background: var(--orange-bg);
-      border: 1px solid rgba(200,90,26,0.2);
-      border-radius: 4px;
-      padding: 16px 20px;
-      font-size: 0.85rem;
-      color: var(--orange);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 40px 48px;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .footer-logo span.brad { color: var(--orange); }
-    .footer-logo span.leigh { color: var(--dark-text); font-style: italic; }
-
-    .footer-info {
-      font-size: 0.8rem;
-      color: var(--light-text);
-      line-height: 1.8;
-      text-align: right;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .contact-layout { grid-template-columns: 1fr; }
-      .contact-sidebar { border-left: none; border-top: 1px solid var(--border); padding: 40px 24px; }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .page-header { padding: 100px 24px 40px; }
-      .form-section { padding: 40px 24px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
-      .footer-info { text-align: left; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; }
-    }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } .contact-sidebar { border-left: none; border-top: 1px solid var(--border); padding: 40px 24px; } }
+    @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } .hamburger { display: flex; } .page-header { padding: 100px 24px 40px; } .form-section { padding: 40px 24px; } .form-row { grid-template-columns: 1fr; } footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; } .footer-info { text-align: left; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html">
-      <span class="brad">Brad</span><span class="leigh">Leigh</span><span class="ltd">Solutions Ltd.</span>
+      <div class="logo-line1"><span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span></div>
+      <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -429,7 +118,6 @@
     </button>
   </nav>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="service.html">Services</a>
@@ -437,76 +125,50 @@
     <a href="contact.html" class="mobile-cta">Get a Quote</a>
   </div>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
     <p class="page-header-eyebrow">Free No-Obligation Quote</p>
     <h1 class="page-header-title">Let's Move Your Vehicle</h1>
-    <p class="page-header-sub">Fill out the quote form below, email us at <a href="mailto:info@bradleigh.ca" style="color:var(--orange);text-decoration:none;">info@bradleigh.ca</a>, or give us a call. We are happy to help however works best for you.</p>
+    <p class="page-header-sub">Fill out the quote form below, email us at <a href="mailto:info@bradleigh.ca" style="color:var(--red);text-decoration:none;">info@bradleigh.ca</a>, or give us a call. We are happy to help however works best for you.</p>
   </div>
 
-  <!-- CONTACT OPTIONS -->
   <div style="background:var(--bg-white);padding:32px 48px;border-bottom:1px solid var(--border);display:flex;gap:32px;flex-wrap:wrap;">
-
     <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--orange-bg);border:1px solid rgba(200,90,26,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📞</div>
+      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📞</div>
       <div>
         <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Phone</div>
-        <div style="font-size:0.95rem;color:var(--mid-text);font-style:italic;">1-877-232-7235</div>
+        <a href="tel:18772327235" style="font-size:0.95rem;color:var(--red);text-decoration:none;font-weight:600;">1-877-232-7235</a>
       </div>
     </div>
-
     <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--orange-bg);border:1px solid rgba(200,90,26,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">✉️</div>
+      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">✉️</div>
       <div>
         <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Email</div>
-        <a href="mailto:info@bradleigh.ca" style="font-size:0.95rem;color:var(--orange);text-decoration:none;font-weight:500;">info@bradleigh.ca</a>
+        <a href="mailto:info@bradleigh.ca" style="font-size:0.95rem;color:var(--red);text-decoration:none;font-weight:500;">info@bradleigh.ca</a>
       </div>
     </div>
-
     <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--orange-bg);border:1px solid rgba(200,90,26,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📋</div>
+      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📋</div>
       <div>
         <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Quote Form</div>
         <div style="font-size:0.95rem;color:var(--mid-text);">Fill out the form below</div>
       </div>
     </div>
-
   </div>
 
-  <!-- MAIN LAYOUT -->
   <div class="contact-layout">
-
-    <!-- FORM -->
     <div class="form-section">
       <h2>Request a Quote</h2>
       <p>Tell us about your shipment and we will take it from there.</p>
-
       <div id="quoteForm">
-
-        <!-- Contact Info -->
         <div class="form-divider">Your Information</div>
         <div class="form-row">
-          <div class="form-group">
-            <label>First Name <span class="required">*</span></label>
-            <input type="text" id="firstName" placeholder="Jane" />
-          </div>
-          <div class="form-group">
-            <label>Last Name <span class="required">*</span></label>
-            <input type="text" id="lastName" placeholder="Smith" />
-          </div>
+          <div class="form-group"><label>First Name <span class="required">*</span></label><input type="text" id="firstName" placeholder="Jane" /></div>
+          <div class="form-group"><label>Last Name <span class="required">*</span></label><input type="text" id="lastName" placeholder="Smith" /></div>
         </div>
-
         <div class="form-row">
-          <div class="form-group">
-            <label>Email Address <span class="required">*</span></label>
-            <input type="email" id="email" placeholder="jane@example.com" />
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="phone" placeholder="(555) 000-0000" />
-          </div>
+          <div class="form-group"><label>Email Address <span class="required">*</span></label><input type="email" id="email" placeholder="jane@example.com" /></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="(555) 000-0000" /></div>
         </div>
-
         <div class="form-group">
           <label>Are you a...</label>
           <select id="customerType">
@@ -516,22 +178,13 @@
             <option>Other</option>
           </select>
         </div>
-
-        <!-- Shipment Details -->
         <div class="form-divider">Shipment Details</div>
-
         <div class="form-row">
           <div class="form-group">
             <label>Number of Vehicles <span class="required">*</span></label>
             <select id="numVehicles">
               <option value="">Select one</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7+</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option>
             </select>
           </div>
           <div class="form-group">
@@ -544,88 +197,49 @@
             </select>
           </div>
         </div>
-
-        <!-- Route -->
-        <div class="form-divider">Pickup & Delivery</div>
-
+        <div class="form-divider">Pickup &amp; Delivery</div>
         <div class="form-row">
-          <div class="form-group">
-            <label>Pickup City / Province <span class="required">*</span></label>
-            <input type="text" id="pickupLocation" placeholder="e.g. Calgary, AB" />
-          </div>
+          <div class="form-group"><label>Pickup City / Province <span class="required">*</span></label><input type="text" id="pickupLocation" placeholder="e.g. Calgary, AB" /></div>
           <div class="form-group">
             <label>Pickup Country <span class="required">*</span></label>
-            <select id="pickupCountry">
-              <option value="">Select one</option>
-              <option>Canada</option>
-              <option>United States</option>
-            </select>
+            <select id="pickupCountry"><option value="">Select one</option><option>Canada</option><option>United States</option></select>
           </div>
         </div>
-
         <div class="form-row">
-          <div class="form-group">
-            <label>Delivery City / Province or State <span class="required">*</span></label>
-            <input type="text" id="deliveryLocation" placeholder="e.g. Edmonton, AB" />
-          </div>
+          <div class="form-group"><label>Delivery City / Province or State <span class="required">*</span></label><input type="text" id="deliveryLocation" placeholder="e.g. Edmonton, AB" /></div>
           <div class="form-group">
             <label>Delivery Country <span class="required">*</span></label>
-            <select id="deliveryCountry">
-              <option value="">Select one</option>
-              <option>Canada</option>
-              <option>United States</option>
-            </select>
+            <select id="deliveryCountry"><option value="">Select one</option><option>Canada</option><option>United States</option></select>
           </div>
         </div>
-
-        <div class="form-group">
-          <label>Preferred Pickup Date</label>
-          <input type="date" id="pickupDate" />
-        </div>
-
-        <div class="form-group">
-          <label>Additional Notes</label>
-          <textarea id="notes" placeholder="Anything else we should know about your shipment?"></textarea>
-        </div>
-
+        <div class="form-group"><label>Preferred Pickup Date</label><input type="date" id="pickupDate" /></div>
+        <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything else we should know about your shipment?"></textarea></div>
         <button class="btn-submit" onclick="handleSubmit()">Send My Quote Request</button>
         <p class="form-note">We typically respond within 1 business day.</p>
-
-        <div class="success-msg" id="successMsg">
-          Thanks! We have received your quote request and will be in touch shortly at the email you provided.
-        </div>
-
+        <div class="success-msg" id="successMsg">Thanks! We have received your quote request and will be in touch shortly at the email you provided.</div>
       </div>
     </div>
 
-    <!-- SIDEBAR -->
     <div class="contact-sidebar">
-
       <div class="sidebar-block">
         <h3>Contact Us Directly</h3>
         <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text"><strong>Toll Free</strong><a href="tel:18772327235">1-877-232-7235</a></div>
+        </div>
+        <div class="contact-item">
           <div class="contact-item-icon">✉️</div>
-          <div class="contact-item-text">
-            <strong>General Inquiries</strong>
-            <a href="mailto:info@bradleigh.ca">info@bradleigh.ca</a>
-          </div>
+          <div class="contact-item-text"><strong>General Inquiries</strong><a href="mailto:info@bradleigh.ca">info@bradleigh.ca</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🚚</div>
-          <div class="contact-item-text">
-            <strong>Dispatch</strong>
-            <a href="mailto:dispatch@bradleigh.ca">dispatch@bradleigh.ca</a>
-          </div>
+          <div class="contact-item-text"><strong>Dispatch</strong><a href="mailto:dispatch@bradleigh.ca">dispatch@bradleigh.ca</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🇨🇦</div>
-          <div class="contact-item-text">
-            <strong>Based In</strong>
-            Canada
-          </div>
+          <div class="contact-item-text"><strong>Based In</strong>Canada</div>
         </div>
       </div>
-
       <div class="sidebar-block">
         <h3>Our Credentials</h3>
         <ul class="credential-list">
@@ -636,21 +250,18 @@
           <li>Canada &amp; USA Transport Authority</li>
         </ul>
       </div>
-
-      <div class="response-badge">
-        ⚡ We typically respond within 1 business day
-      </div>
-
+      <div class="response-badge">⚡ We typically respond within 1 business day</div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <a class="footer-logo" href="index.html">
-      <span class="brad">Brad</span><span class="leigh">Leigh</span>
+      <div class="logo-line1"><span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span></div>
+      <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <div class="footer-info">
       &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
+      📞 1-877-232-7235 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
       bradleighsolutions.com
     </div>
@@ -660,24 +271,12 @@
     function handleSubmit() {
       const required = ['firstName', 'lastName', 'email', 'numVehicles', 'shipmentType', 'pickupLocation', 'pickupCountry', 'deliveryLocation', 'deliveryCountry'];
       let allGood = true;
-
       required.forEach(id => {
         const el = document.getElementById(id);
-        if (!el.value.trim()) {
-          el.style.borderColor = '#C85A1A';
-          el.style.background = '#FDF1EB';
-          allGood = false;
-        } else {
-          el.style.borderColor = '';
-          el.style.background = '';
-        }
+        if (!el.value.trim()) { el.style.borderColor = '#B91C1C'; el.style.background = '#FEF2F2'; allGood = false; }
+        else { el.style.borderColor = ''; el.style.background = ''; }
       });
-
-      if (!allGood) {
-        alert('Please fill in all required fields marked with an asterisk.');
-        return;
-      }
-
+      if (!allGood) { alert('Please fill in all required fields marked with an asterisk.'); return; }
       const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value || 'Not provided';
@@ -690,42 +289,16 @@
       const deliveryCountry = document.getElementById('deliveryCountry').value;
       const date = document.getElementById('pickupDate').value || 'Flexible';
       const notes = document.getElementById('notes').value || 'None';
-
       const subject = encodeURIComponent('Quote Request from ' + name);
-      const body = encodeURIComponent(
-        'QUOTE REQUEST\n' +
-        '====================\n\n' +
-        'NAME: ' + name + '\n' +
-        'EMAIL: ' + email + '\n' +
-        'PHONE: ' + phone + '\n' +
-        'CUSTOMER TYPE: ' + customerType + '\n\n' +
-        'NUMBER OF VEHICLES: ' + numVehicles + '\n' +
-        'SHIPMENT TYPE: ' + shipment + '\n\n' +
-        'PICKUP: ' + pickup + ', ' + pickupCountry + '\n' +
-        'DELIVERY: ' + delivery + ', ' + deliveryCountry + '\n' +
-        'PREFERRED DATE: ' + date + '\n\n' +
-        'NOTES: ' + notes
-      );
-
+      const body = encodeURIComponent('QUOTE REQUEST\n====================\n\nNAME: ' + name + '\nEMAIL: ' + email + '\nPHONE: ' + phone + '\nCUSTOMER TYPE: ' + customerType + '\n\nNUMBER OF VEHICLES: ' + numVehicles + '\nSHIPMENT TYPE: ' + shipment + '\n\nPICKUP: ' + pickup + ', ' + pickupCountry + '\nDELIVERY: ' + delivery + ', ' + deliveryCountry + '\nPREFERRED DATE: ' + date + '\n\nNOTES: ' + notes);
       window.location.href = 'mailto:info@bradleigh.ca?subject=' + subject + '&body=' + body;
-
       document.getElementById('successMsg').style.display = 'block';
       document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
     }
-
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
   </script>
-
 </body>
 </html>
