@@ -396,46 +396,14 @@
 
     /* ── CTA STRIP ── */
     .cta-strip {
-      padding: 80px 48px;
-      background: var(--red);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
+      padding: 80px 48px; background: #EFEFED;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+      border-top: 1px solid var(--border);
     }
-
-    .cta-strip-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 1.1;
-    }
-
-    .cta-strip-sub {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      margin-top: 6px;
-    }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--red);
-      padding: 16px 40px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      white-space: nowrap;
-      transition: opacity 0.2s;
-      display: inline-block;
-    }
-    .btn-white:hover { opacity: 0.9; }
+    .cta-strip-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; text-transform: uppercase; color: var(--dark-text); line-height: 1.1; }
+    .cta-strip-sub { font-size: 0.9rem; color: var(--mid-text); margin-top: 6px; }
+    .btn-white { background: var(--red); color: var(--white); padding: 16px 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 3px; white-space: nowrap; transition: background 0.2s; display: inline-block; }
+    .btn-white:hover { background: var(--red-lt); }
 
     /* ── FOOTER ── */
     footer {
@@ -514,7 +482,7 @@
     <img src="images/truck-black-sunny.jpg" alt="BradLeigh Solutions truck on a sunny day" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.3) 100%);"></div>
     <div style="position:relative;z-index:2;padding:48px;">
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#B91C1C;margin-bottom:10px;">Our Story</p>
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;margin-bottom:10px;">Our Story</p>
       <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;line-height:1;color:#FFFFFF;max-width:700px;text-shadow:0 2px 8px rgba(0,0,0,0.5);">Built on Experience.<br />Driven by Trust.</h1>
       <p style="margin-top:14px;font-size:1rem;color:rgba(255,255,255,0.9);max-width:520px;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,0.5);">BradLeigh Solutions is an Alberta based vehicle transport company with over a decade on the road and a team that genuinely cares about the work they do.</p>
       <a href="tel:18772327235" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:#B91C1C;border:none;color:#FFFFFF;text-decoration:none;padding:14px 28px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:0.05em;transition:background 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.3);">📞 1-877-232-7235</a>
