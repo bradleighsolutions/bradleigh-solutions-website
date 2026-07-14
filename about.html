@@ -9,9 +9,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange:    #C85A1A;
-      --orange-lt: #E06820;
-      --orange-bg: #FDF1EB;
+      --red:       #B91C1C;
+      --red-lt:    #DC2626;
+      --red-bg:    #FEF2F2;
       --dark-text: #1A1A1A;
       --mid-text:  #4A4A4A;
       --light-text:#767676;
@@ -46,16 +46,43 @@
       box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
 
+    /* ── CODED LOGO ── */
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
       text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
-    .nav-logo span.brad { color: var(--orange); }
-    .nav-logo span.leigh { color: var(--dark-text); font-style: italic; }
-    .nav-logo span.ltd { color: var(--light-text); font-weight: 400; font-size: 1rem; margin-left: 4px; }
+    .logo-line1 {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+    }
+    .logo-brad {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1A1A1A;
+      text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC;
+      letter-spacing: 0.01em;
+    }
+    .logo-leigh {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #6B6B6B;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+    .logo-solutions {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #555555;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
 
     .nav-links {
       display: flex;
@@ -71,17 +98,17 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover { color: var(--red); }
 
     .nav-cta {
-      background: var(--orange);
+      background: var(--red);
       color: var(--white) !important;
       padding: 10px 22px;
       border-radius: 3px;
       font-weight: 600 !important;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--orange-lt) !important; }
+    .nav-cta:hover { background: var(--red-lt) !important; }
 
     /* ── HAMBURGER ── */
     .hamburger {
@@ -133,9 +160,9 @@
       transition: color 0.2s;
     }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu a:hover { color: var(--red); }
     .mobile-menu .mobile-cta {
-      background: var(--orange);
+      background: var(--red);
       color: var(--white) !important;
       text-align: center;
       padding: 14px;
@@ -143,40 +170,6 @@
       margin-top: 8px;
       border-bottom: none !important;
       font-weight: 700 !important;
-    }
-
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 140px 48px 60px;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-header-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
-
-    .page-header-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1;
-      color: var(--dark-text);
-    }
-
-    .page-header-sub {
-      margin-top: 16px;
-      font-size: 1rem;
-      color: var(--mid-text);
-      max-width: 560px;
-      line-height: 1.7;
     }
 
     /* ── STORY SECTION ── */
@@ -189,15 +182,13 @@
       background: var(--bg-white);
     }
 
-    .story-content {}
-
     .section-eyebrow {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--red);
       margin-bottom: 12px;
     }
 
@@ -217,7 +208,6 @@
       line-height: 1.85;
       margin-bottom: 16px;
     }
-
     .story-content p:last-child { margin-bottom: 0; }
 
     .story-stats {
@@ -237,7 +227,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 2.8rem;
       font-weight: 800;
-      color: var(--orange);
+      color: var(--red);
       line-height: 1;
     }
 
@@ -249,7 +239,7 @@
       margin-top: 6px;
     }
 
-    /* ── VALUES SECTION ── */
+    /* ── VALUES ── */
     .values {
       padding: 80px 48px;
       background: var(--bg-light);
@@ -271,25 +261,21 @@
       position: relative;
       transition: box-shadow 0.2s;
     }
-    .value-card:hover { box-shadow: 0 4px 20px rgba(200,90,26,0.08); }
+    .value-card:hover { box-shadow: 0 4px 20px rgba(185,28,28,0.08); }
     .value-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 3px;
-      background: var(--orange);
+      background: var(--red);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s ease;
     }
     .value-card:hover::before { transform: scaleX(1); }
 
-    .value-icon {
-      font-size: 1.8rem;
-      margin-bottom: 16px;
-      display: block;
-    }
+    .value-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
 
     .value-title {
       font-family: 'Barlow Condensed', sans-serif;
@@ -307,7 +293,7 @@
       line-height: 1.7;
     }
 
-    /* ── TEAM SECTION ── */
+    /* ── TEAM ── */
     .team {
       padding: 80px 48px;
       background: var(--bg-white);
@@ -336,8 +322,8 @@
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: var(--orange-bg);
-      border: 2px solid var(--orange);
+      background: var(--red-bg);
+      border: 2px solid var(--red);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -345,15 +331,13 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.4rem;
       font-weight: 800;
-      color: var(--orange);
+      color: var(--red);
     }
 
     .team-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--dark-text);
       margin-bottom: 4px;
     }
@@ -362,15 +346,15 @@
       font-size: 0.8rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--red);
       font-weight: 600;
     }
 
     .team-driver-note {
       margin-top: 40px;
       padding: 24px 32px;
-      background: var(--orange-bg);
-      border: 1px solid rgba(200,90,26,0.2);
+      background: var(--red-bg);
+      border: 1px solid rgba(185,28,28,0.2);
       border-radius: 4px;
       font-size: 0.9rem;
       color: var(--mid-text);
@@ -378,29 +362,27 @@
       align-items: center;
       gap: 16px;
     }
-
-    .team-driver-note span {
-      font-size: 1.5rem;
-    }
+    .team-driver-note span { font-size: 1.5rem; }
 
     /* ── QUOTE STRIP ── */
     .quote-strip {
       padding: 72px 48px;
-      background: var(--dark-text);
+      background: #EFEFED;
       text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .quote-text {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 700;
-      color: var(--white);
+      color: var(--dark-text);
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.3;
     }
-
-    .quote-text span { color: var(--orange); }
+    .quote-text span { color: var(--red); }
 
     .quote-attr {
       font-size: 0.8rem;
@@ -413,7 +395,7 @@
     /* ── CTA STRIP ── */
     .cta-strip {
       padding: 80px 48px;
-      background: var(--orange);
+      background: var(--red);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -438,7 +420,7 @@
 
     .btn-white {
       background: var(--white);
-      color: var(--orange);
+      color: var(--red);
       padding: 16px 40px;
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1rem;
@@ -465,14 +447,10 @@
       border-top: 1px solid var(--border);
     }
 
-    .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .footer-logo span.brad { color: var(--orange); }
-    .footer-logo span.leigh { color: var(--dark-text); font-style: italic; }
+    .footer-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1.1; }
+    .footer-logo .logo-brad { font-size: 2rem; }
+    .footer-logo .logo-leigh { font-size: 1.75rem; }
+    .footer-logo .logo-solutions { font-size: 0.95rem; color: #555555; font-weight: 600; }
 
     .footer-info {
       font-size: 0.8rem;
@@ -486,7 +464,6 @@
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-header { padding: 100px 24px 40px; }
       .story { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
       .values { padding: 60px 24px; }
       .team { padding: 60px 24px; }
@@ -506,7 +483,10 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html">
-      <span class="brad">Brad</span><span class="leigh">Leigh</span><span class="ltd">Solutions Ltd.</span>
+      <div class="logo-line1">
+        <span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span>
+      </div>
+      <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -530,11 +510,12 @@
   <!-- PAGE HERO WITH PHOTO -->
   <div style="margin-top:72px;position:relative;height:420px;overflow:hidden;display:flex;align-items:flex-end;">
     <img src="images/truck-black-sunny.jpg" alt="BradLeigh Solutions truck on a sunny day" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;" />
-    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.25) 60%, transparent 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.3) 100%);"></div>
     <div style="position:relative;z-index:2;padding:48px;">
-      <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Our Story</p>
-      <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;line-height:1;color:#FFFFFF;max-width:700px;">Built on Experience.<br />Driven by Trust.</h1>
-      <p style="margin-top:14px;font-size:1rem;color:rgba(255,255,255,0.75);max-width:520px;line-height:1.7;">BradLeigh Solutions is an Alberta based vehicle transport company with over a decade on the road and a team that genuinely cares about the work they do.</p>
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#B91C1C;margin-bottom:10px;">Our Story</p>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;line-height:1;color:#FFFFFF;max-width:700px;text-shadow:0 2px 8px rgba(0,0,0,0.5);">Built on Experience.<br />Driven by Trust.</h1>
+      <p style="margin-top:14px;font-size:1rem;color:rgba(255,255,255,0.9);max-width:520px;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,0.5);">BradLeigh Solutions is an Alberta based vehicle transport company with over a decade on the road and a team that genuinely cares about the work they do.</p>
+      <a href="tel:18772327235" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:#B91C1C;border:none;color:#FFFFFF;text-decoration:none;padding:14px 28px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:0.05em;transition:background 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.3);">📞 1-877-232-7235</a>
     </div>
   </div>
 
@@ -638,12 +619,6 @@
         <div class="team-role">Lead Driver &amp; Dispatcher</div>
       </div>
 
-      <div class="team-card">
-        <div class="team-avatar">KC</div>
-        <div class="team-name">Kyle Confurius</div>
-        <div class="team-role">Shop Foreman</div>
-      </div>
-
     </div>
 
     <div class="team-driver-note">
@@ -671,10 +646,14 @@
   <!-- FOOTER -->
   <footer>
     <a class="footer-logo" href="index.html">
-      <span class="brad">Brad</span><span class="leigh">Leigh</span>
+      <div class="logo-line1">
+        <span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span>
+      </div>
+      <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <div class="footer-info">
       &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
+      📞 1-877-232-7235 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
       bradleighsolutions.com
     </div>
