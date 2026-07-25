@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get a Quote | BradLeigh Solutions Ltd.</title>
+  <title>BradLeigh Solutions Ltd. | Vehicle Transport Canada & USA</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --red:       #B91C1C;
       --red-lt:    #DC2626;
@@ -19,9 +20,11 @@
       --bg-light:  #F7F5F3;
       --white:     #FFFFFF;
     }
+
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg-white); color: var(--dark-text); line-height: 1.6; }
 
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -29,79 +32,215 @@
       background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border); box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
+
     .nav-logo { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
     .logo-line1 { display: flex; align-items: baseline; }
-    .logo-brad { font-family: 'Barlow Condensed', sans-serif; font-size: 2.9rem; font-weight: 700; color: #B91C1C; letter-spacing: 0.05em; text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC; }
-    .logo-leigh { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 400; color: #B91C1C; font-style: italic; letter-spacing: 0.05em; }
-    .logo-solutions { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #555555; font-style: italic; letter-spacing: 0.18em; margin-top: 1px; align-self: center; }
+    .logo-brad {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 2.9rem; font-weight: 700;
+      color: #B91C1C; letter-spacing: 0.05em;
+      text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC;
+    }
+    .logo-leigh {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 400;
+      color: #B91C1C; font-style: italic; letter-spacing: 0.05em;
+    }
+    .logo-solutions {
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
+      color: #555555; font-style: italic; letter-spacing: 0.18em; margin-top: 1px; align-self: center;
+    }
+
     .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { color: var(--mid-text); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a {
+      color: var(--mid-text); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--red); }
-    .nav-cta { background: var(--red); color: var(--white) !important; padding: 10px 22px; border-radius: 3px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta {
+      background: var(--red); color: var(--white) !important; padding: 10px 22px;
+      border-radius: 3px; font-weight: 600 !important; transition: background 0.2s !important;
+    }
     .nav-cta:hover { background: var(--red-lt) !important; }
 
+    /* ── HAMBURGER ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 200; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark-text); border-radius: 2px; transition: all 0.3s ease; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 99; padding: 16px 24px 24px; flex-direction: column; gap: 4px; }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 99; padding: 16px 24px 24px; flex-direction: column; gap: 4px;
+    }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: var(--mid-text); text-decoration: none; font-size: 1rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a {
+      color: var(--mid-text); text-decoration: none; font-size: 1rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 0;
+      border-bottom: 1px solid var(--border); transition: color 0.2s;
+    }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--red); }
-    .mobile-menu .mobile-cta { background: var(--red); color: var(--white) !important; text-align: center; padding: 14px; border-radius: 3px; margin-top: 8px; border-bottom: none !important; font-weight: 700 !important; }
+    .mobile-menu .mobile-cta {
+      background: var(--red); color: var(--white) !important; text-align: center;
+      padding: 14px; border-radius: 3px; margin-top: 8px; border-bottom: none !important; font-weight: 700 !important;
+    }
 
-    .page-header { padding: 120px 48px 40px; background: var(--bg-light); border-bottom: 1px solid var(--border); }
-    .page-header-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-    .page-header-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--dark-text); }
-    .page-header-sub { margin-top: 16px; font-size: 1rem; color: var(--mid-text); max-width: 500px; line-height: 1.7; }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden; background: var(--bg-white);
+    }
+    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: 0; }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.15) 100%);
+    }
+    .hero > *:not(.hero-bg):not(.hero-overlay) { position: relative; z-index: 2; }
 
-    .contact-layout { display: grid; grid-template-columns: 1fr 420px; gap: 0; min-height: 70vh; }
-    .form-section { padding: 64px 48px; background: var(--bg-white); }
-    .form-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; color: var(--dark-text); margin-bottom: 8px; }
-    .form-section p { font-size: 0.9rem; color: var(--mid-text); margin-bottom: 36px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-text); }
-    label .required { color: var(--red); margin-left: 2px; }
-    input, select, textarea { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--dark-text); background: var(--bg-white); border: 1px solid var(--border); border-radius: 4px; padding: 12px 16px; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; appearance: none; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(185,28,28,0.08); }
-    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A4A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
-    textarea { resize: vertical; min-height: 110px; }
-    .form-divider { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); padding: 24px 0 16px; border-top: 1px solid var(--border); margin-top: 8px; }
-    .btn-submit { background: var(--red); color: var(--white); padding: 16px 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 3px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 8px; width: 100%; }
-    .btn-submit:hover { background: var(--red-lt); transform: translateY(-1px); }
-    .form-note { font-size: 0.78rem; color: var(--light-text); margin-top: 12px; text-align: center; }
-    .success-msg { display: none; background: #EDF7ED; border: 1px solid #A8D5A8; border-radius: 4px; padding: 20px 24px; margin-top: 20px; font-size: 0.9rem; color: #2E6B2E; }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #555555; margin-bottom: 20px; margin-top: 8px;
+    }
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 800; line-height: 0.95; letter-spacing: -0.01em; max-width: 800px;
+      text-transform: uppercase; color: var(--dark-text);
+    }
+    .hero-headline .accent { color: var(--red); }
+    .hero-tagline { margin-top: 28px; font-size: 1.15rem; color: var(--mid-text); font-weight: 400; max-width: 480px; letter-spacing: 0.03em; }
+    .hero-tagline strong { color: var(--dark-text); font-weight: 600; }
 
-    .contact-sidebar { background: var(--bg-light); border-left: 1px solid var(--border); padding: 64px 40px; display: flex; flex-direction: column; gap: 40px; }
-    .sidebar-block h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark-text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--red); display: inline-block; }
-    .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
-    .contact-item-icon { font-size: 1.1rem; margin-top: 2px; min-width: 20px; }
-    .contact-item-text { font-size: 0.875rem; color: var(--mid-text); line-height: 1.6; }
-    .contact-item-text strong { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); margin-bottom: 2px; }
-    .contact-item-text a { color: var(--red); text-decoration: none; }
-    .contact-item-text a:hover { text-decoration: underline; }
-    .credential-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .credential-list li { font-size: 0.85rem; color: var(--mid-text); display: flex; align-items: center; gap: 10px; }
-    .credential-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; min-width: 6px; background: var(--red); border-radius: 50%; }
-    .response-badge { background: var(--red-bg); border: 1px solid rgba(185,28,28,0.2); border-radius: 4px; padding: 16px 20px; font-size: 0.85rem; color: var(--red); font-weight: 500; display: flex; align-items: center; gap: 10px; }
+    /* Phone number in hero */
+    .hero-phone {
+      margin-top: 20px;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #2C2C2C; color: var(--white); text-decoration: none;
+      padding: 14px 28px; border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700;
+      letter-spacing: 0.05em; transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: fit-content;
+    }
+    .hero-phone:hover { background: #3D3D3D; }
 
-    footer { padding: 40px 48px; background: var(--bg-light); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--border); }
+    .hero-actions { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red); color: var(--white); padding: 16px 36px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-lt); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--mid-text); padding: 16px 36px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border: 1px solid var(--border); border-radius: 3px; transition: border-color 0.2s, color 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--red); color: var(--red); }
+
+    .hero-stats { display: flex; gap: 48px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--dark-text); line-height: 1; }
+    .stat-number span { color: var(--dark-text); }
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-text); margin-top: 4px; }
+
+    /* ── SERVICES ── */
+    .services { padding: 100px 48px; background: var(--bg-light); }
+    .section-eyebrow {
+      font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; font-style: italic;
+      color: #555555; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase; line-height: 1; margin-bottom: 60px;
+      max-width: 600px; color: var(--dark-text);
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+    .service-card {
+      background: var(--bg-white); padding: 40px 36px; position: relative;
+      transition: background 0.2s, box-shadow 0.2s; border: 1px solid var(--border);
+    }
+    .service-card:hover { background: var(--bg-light); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+      background: var(--red); transition: height 0.3s ease;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-icon-wrap {
+      width: 44px; height: 44px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-text); transition: color 0.2s;
+    }
+    .service-icon-wrap svg { width: 30px; height: 30px; }
+    .service-card:hover .service-icon-wrap { color: var(--red); }
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--dark-text); margin-bottom: 12px;
+    }
+    .service-desc { font-size: 0.9rem; color: var(--mid-text); line-height: 1.7; }
+
+    /* ── WHY US ── */
+    .why { padding: 100px 48px; background: var(--bg-white); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-content p { color: var(--mid-text); font-size: 0.95rem; line-height: 1.8; margin-top: 20px; max-width: 480px; }
+    .why-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .why-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.9rem; color: var(--dark-text); }
+    .why-list li::before { content: ''; display: block; width: 6px; height: 6px; min-width: 6px; background: var(--dark-text); border-radius: 50%; margin-top: 7px; }
+    .why-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .why-block { background: var(--bg-light); border: 1px solid var(--border); padding: 36px 28px; text-align: center; }
+    .why-block-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; color: var(--dark-text); line-height: 1; }
+    .why-block-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light-text); margin-top: 6px; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 80px 48px; background: #EFEFED;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+    }
+    .cta-strip-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; text-transform: uppercase; color: var(--dark-text); line-height: 1.1; }
+    .cta-strip-sub { font-size: 0.9rem; color: var(--mid-text); margin-top: 6px; }
+    .btn-white {
+      background: var(--red); color: var(--white); padding: 16px 40px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border-radius: 3px; white-space: nowrap; transition: background 0.2s; display: inline-block;
+    }
+    .btn-white:hover { background: var(--red-lt); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px; background: var(--bg-light);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+      border-top: 1px solid var(--border);
+    }
     .footer-logo { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
     .footer-logo .logo-brad { font-size: 2.4rem; letter-spacing: 0.05em; }
     .footer-logo .logo-leigh { font-size: 2.1rem; letter-spacing: 0.05em; }
     .footer-logo .logo-solutions { font-size: 0.8rem; color: #555555; font-weight: 600; letter-spacing: 0.18em; align-self: center; }
     .footer-info { font-size: 0.8rem; color: var(--light-text); line-height: 1.8; text-align: right; }
 
-    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } .contact-sidebar { border-left: none; border-top: 1px solid var(--border); padding: 40px 24px; } }
-    @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } .hamburger { display: flex; } .page-header { padding: 100px 24px 40px; } .form-section { padding: 40px 24px; } .form-row { grid-template-columns: 1fr; } footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; } .footer-info { text-align: left; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 140px 24px 60px; }
+      .hero-tagline { max-width: 78%; }
+      .services { padding: 60px 24px; }
+      .why { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+      .cta-strip { padding: 60px 24px; flex-direction: column; align-items: flex-start; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+      .hero-stats { gap: 32px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="index.html">
       <div class="logo-line1"><span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span></div>
@@ -118,6 +257,7 @@
     </button>
   </nav>
 
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="service.html">Services</a>
@@ -125,143 +265,130 @@
     <a href="contact.html" class="mobile-cta">Get a Quote</a>
   </div>
 
-  <div class="page-header">
-    <p class="page-header-eyebrow">Free No-Obligation Quote</p>
-    <h1 class="page-header-title">Let's Move Your Vehicle</h1>
-    <p class="page-header-sub">Fill out the quote form below, email us at <a href="mailto:info@bradleigh.ca" style="color:var(--red);text-decoration:none;">info@bradleigh.ca</a>, or give us a call. We are happy to help however works best for you.</p>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg" src="images/truck-haulers-face-off.jpg" alt="BradLeigh Solutions truck at sunset with full load" />
+    <div class="hero-overlay"></div>
+    <p class="hero-eyebrow">Canada &amp; USA Vehicle Transport</p>
+    <h1 class="hero-headline">
+      Moving<br />
+      Vehicles.<br />
+      <span class="accent">Delivering</span><br />
+      Trust.
+    </h1>
+    <p class="hero-tagline">
+      <strong>Coast to coast. Border to border.</strong><br />
+      Car hauling across Canada and into the United States, done right.
+    </p>
+    <a href="tel:18772327235" class="hero-phone">📞 1-877-232-7235</a>
+    <p style="margin-top:10px;font-size:0.9rem;color:var(--mid-text);">Local: <a href="tel:5874872029" style="color:var(--dark-text);font-weight:600;text-decoration:none;">587-487-2029</a></p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">11<span>+</span></div>
+        <div class="stat-label">Years on the Road</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10<span>+</span></div>
+        <div class="stat-label">Provinces Covered</div>
+      </div>
+    </div>
+  </section>
 
-  <div style="background:var(--bg-white);padding:32px 48px;border-bottom:1px solid var(--border);display:flex;gap:32px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📞</div>
-      <div>
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Phone</div>
-        <a href="tel:18772327235" style="font-size:0.95rem;color:var(--red);text-decoration:none;font-weight:600;">1-877-232-7235</a>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">✉️</div>
-      <div>
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Email</div>
-        <a href="mailto:info@bradleigh.ca" style="font-size:0.95rem;color:var(--red);text-decoration:none;font-weight:500;">info@bradleigh.ca</a>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📋</div>
-      <div>
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Quote Form</div>
-        <div style="font-size:0.95rem;color:var(--red);font-weight:600;">Fill out the form below</div>
-      </div>
-    </div>
-  </div>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-eyebrow">What We Haul</p>
+    <h2 class="section-title">Built for Every Load</h2>
+    <div class="services-grid">
 
-  <div class="contact-layout">
-    <div class="form-section">
-      <h2>Request a Quote</h2>
-      <p>Tell us about your shipment and we will take it from there.</p>
-      <div id="quoteForm">
-        <div class="form-divider">Your Information</div>
-        <div class="form-row">
-          <div class="form-group"><label>First Name <span class="required">*</span></label><input type="text" id="firstName" placeholder="Jane" /></div>
-          <div class="form-group"><label>Last Name <span class="required">*</span></label><input type="text" id="lastName" placeholder="Smith" /></div>
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13"/>
+            <path d="M3 13h18v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"/>
+            <circle cx="7" cy="17" r="1.5"/>
+            <circle cx="17" cy="17" r="1.5"/>
+          </svg>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Email Address <span class="required">*</span></label><input type="email" id="email" placeholder="jane@example.com" /></div>
-          <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="(555) 000-0000" /></div>
+        <div class="service-title">Vehicle Transport — Canada</div>
+        <p class="service-desc">Nationwide car hauling across all Canadian provinces. Dealerships, fleet relocations, and commercial customers. If it rolls, we move it.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
         </div>
-        <div class="form-group">
-          <label>Are you a...</label>
-          <select id="customerType" onchange="toggleOtherBox('customerType', 'customerTypeOtherBox', 'Other')">
-            <option value="">Select one</option>
-            <option>Car Dealership</option>
-            <option>Fleet / Corporate</option>
-            <option>Other</option>
-          </select>
+        <div class="service-title">Cross-Border to the USA</div>
+        <p class="service-desc">Licensed and compliant cross-border vehicle transport into the United States. USDOT certified and ready to move your vehicles across the border.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l1-5h16l1 5"/>
+            <path d="M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/>
+            <path d="M5 9v10h14V9"/>
+            <path d="M10 19v-5h4v5"/>
+          </svg>
         </div>
-        <div class="form-group" id="customerTypeOtherBox" style="display:none;">
-          <label>Please Explain</label>
-          <input type="text" id="customerTypeOther" placeholder="Tell us a bit more" />
-        </div>
-        <div class="form-divider">Shipment Details</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Number of Vehicles <span class="required">*</span></label>
-            <select id="numVehicles" onchange="toggleOtherBox('numVehicles', 'numVehiclesOtherBox', '7+')">
-              <option value="">Select one</option>
-              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option>
-            </select>
-            <div class="form-group" id="numVehiclesOtherBox" style="display:none;margin-top:10px;margin-bottom:0;">
-              <label>Please Specify Number</label>
-              <input type="number" id="numVehiclesOther" min="7" placeholder="e.g. 9" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Type of Shipment <span class="required">*</span></label>
-            <select id="shipmentType">
-              <option value="">Select one</option>
-              <option>Vehicle Transport — Canada</option>
-              <option>Cross-Border Vehicle to USA</option>
-              <option>Not Sure / Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-divider">Pickup &amp; Delivery</div>
-        <div class="form-row">
-          <div class="form-group"><label>Pickup City / Province <span class="required">*</span></label><input type="text" id="pickupLocation" placeholder="e.g. Calgary, AB" /></div>
-          <div class="form-group">
-            <label>Pickup Country <span class="required">*</span></label>
-            <select id="pickupCountry"><option value="">Select one</option><option>Canada</option><option>United States</option></select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Delivery City / Province or State <span class="required">*</span></label><input type="text" id="deliveryLocation" placeholder="e.g. Edmonton, AB" /></div>
-          <div class="form-group">
-            <label>Delivery Country <span class="required">*</span></label>
-            <select id="deliveryCountry"><option value="">Select one</option><option>Canada</option><option>United States</option></select>
-          </div>
-        </div>
-        <div class="form-group"><label>Preferred Pickup Date</label><input type="date" id="pickupDate" /></div>
-        <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything else we should know about your shipment?"></textarea></div>
-        <button class="btn-submit" onclick="handleSubmit()">Send My Quote Request</button>
-        <p class="form-note">We typically respond within 1 business day.</p>
-        <div class="success-msg" id="successMsg">Thanks! We have received your quote request and will be in touch shortly at the email you provided.</div>
+        <div class="service-title">Dealership Services</div>
+        <p class="service-desc">Reliable transport partnerships for car dealerships across Canada. Consistent, professional, and built around your schedule.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="why-content">
+      <p class="section-eyebrow">Why BradLeigh</p>
+      <h2 class="section-title">A Company You Can Count On</h2>
+      <p>We have been moving vehicles across Canada and across the border for over 11 years. When you hand over the keys, you deserve to know exactly where your vehicle is going and that it is in good hands getting there.</p>
+      <ul class="why-list">
+        <li>Fully licensed for cross-border USA transport (USDOT, MC, FMCSA)</li>
+        <li>Fully insured and registered</li>
+        <li>Serving dealerships and fleet customers nationwide</li>
+        <li>Specialists in vehicle transport across Canada and into the USA</li>
+        <li>Experienced drivers who know the routes and the regulations</li>
+        <li>Canadian based, border ready</li>
+      </ul>
+    </div>
+    <div class="why-visual">
+      <div class="why-block">
+        <div class="why-block-num">11</div>
+        <div class="why-block-label">Years in Business</div>
+      </div>
+      <div class="why-block">
+        <div class="why-block-num">2</div>
+        <div class="why-block-label">Countries Served</div>
+      </div>
+      <div class="why-block">
+        <div class="why-block-num">10<span style="color:var(--light-text);font-size:1.5rem">+</span></div>
+        <div class="why-block-label">Provinces Covered</div>
+      </div>
+      <div class="why-block">
+        <div class="why-block-num" style="font-size:2rem;">USDOT</div>
+        <div class="why-block-label">Certified Carrier</div>
       </div>
     </div>
+  </section>
 
-    <div class="contact-sidebar">
-      <div class="sidebar-block">
-        <h3>Contact Us Directly</h3>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text"><strong>Toll Free</strong><a href="tel:18772327235">1-877-232-7235</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div class="contact-item-text"><strong>General Inquiries</strong><a href="mailto:info@bradleigh.ca">info@bradleigh.ca</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🚚</div>
-          <div class="contact-item-text"><strong>Dispatch</strong><a href="mailto:dispatch@bradleigh.ca">dispatch@bradleigh.ca</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🇨🇦</div>
-          <div class="contact-item-text"><strong>Based In</strong><span style="color:var(--red);font-weight:600;">Canada</span></div>
-        </div>
-      </div>
-      <div class="sidebar-block">
-        <h3>Our Credentials</h3>
-        <ul class="credential-list">
-          <li>USDOT: 2834168</li>
-          <li>MC: MC-947908</li>
-          <li>Licensed Cross-Border Carrier</li>
-          <li>11+ Years in Operation</li>
-          <li>Canada &amp; USA Transport Authority</li>
-        </ul>
-      </div>
-      <div class="response-badge">⚡ We typically respond within 1 business day</div>
+  <!-- CTA STRIP -->
+  <section class="cta-strip" id="contact">
+    <div class="cta-strip-text">
+      <div class="cta-strip-title">Ready to Move Your Vehicle?</div>
+      <div class="cta-strip-sub">Call us at 1-877-232-7235 (local: 587-487-2029) or get a quote online.</div>
     </div>
-  </div>
+    <a href="contact.html" class="btn-white">Get a Quote</a>
+  </section>
 
+  <!-- FOOTER -->
   <footer>
     <a class="footer-logo" href="index.html">
       <div class="logo-line1"><span class="logo-brad">Brad</span><span class="logo-leigh">Leigh</span></div>
@@ -271,56 +398,22 @@
       &copy; 2026 BradLeigh Solutions Ltd. All rights reserved.<br />
       📞 1-877-232-7235 &nbsp;|&nbsp; 587-487-2029 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
-      21-26004 TWP RD 544, Sturgeon County, AB T8T 0B6<br />
-      bradleighsolutions.com
     </div>
   </footer>
 
   <script>
-    function toggleOtherBox(selectId, boxId, triggerValue) {
-      const select = document.getElementById(selectId);
-      const box = document.getElementById(boxId);
-      box.style.display = (select.value === triggerValue) ? 'block' : 'none';
-    }
-    function handleSubmit() {
-      const required = ['firstName', 'lastName', 'email', 'numVehicles', 'shipmentType', 'pickupLocation', 'pickupCountry', 'deliveryLocation', 'deliveryCountry'];
-      let allGood = true;
-      required.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el.value.trim()) { el.style.borderColor = '#B91C1C'; el.style.background = '#FEF2F2'; allGood = false; }
-        else { el.style.borderColor = ''; el.style.background = ''; }
-      });
-      if (!allGood) { alert('Please fill in all required fields marked with an asterisk.'); return; }
-      const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value || 'Not provided';
-      let customerType = document.getElementById('customerType').value || 'Not specified';
-      if (customerType === 'Other') {
-        const otherText = document.getElementById('customerTypeOther').value;
-        if (otherText.trim()) customerType += ' (' + otherText.trim() + ')';
-      }
-      let numVehicles = document.getElementById('numVehicles').value;
-      if (numVehicles === '7+') {
-        const otherNum = document.getElementById('numVehiclesOther').value;
-        if (otherNum.trim()) numVehicles = otherNum.trim();
-      }
-      const shipment = document.getElementById('shipmentType').value;
-      const pickup = document.getElementById('pickupLocation').value;
-      const pickupCountry = document.getElementById('pickupCountry').value;
-      const delivery = document.getElementById('deliveryLocation').value;
-      const deliveryCountry = document.getElementById('deliveryCountry').value;
-      const date = document.getElementById('pickupDate').value || 'Flexible';
-      const notes = document.getElementById('notes').value || 'None';
-      const subject = encodeURIComponent('Quote Request from ' + name);
-      const body = encodeURIComponent('QUOTE REQUEST\n====================\n\nNAME: ' + name + '\nEMAIL: ' + email + '\nPHONE: ' + phone + '\nCUSTOMER TYPE: ' + customerType + '\n\nNUMBER OF VEHICLES: ' + numVehicles + '\nSHIPMENT TYPE: ' + shipment + '\n\nPICKUP: ' + pickup + ', ' + pickupCountry + '\nDELIVERY: ' + delivery + ', ' + deliveryCountry + '\nPREFERRED DATE: ' + date + '\n\nNOTES: ' + notes);
-      window.location.href = 'mailto:info@bradleigh.ca?subject=' + subject + '&body=' + body;
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
-    }
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
-    mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>
