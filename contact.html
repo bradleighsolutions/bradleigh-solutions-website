@@ -31,9 +31,9 @@
     }
     .nav-logo { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
     .logo-line1 { display: flex; align-items: baseline; }
-    .logo-brad { font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; font-weight: 700; color: #B91C1C; letter-spacing: 0.05em; text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC; }
-    .logo-leigh { font-family: 'Barlow Condensed', sans-serif; font-size: 2.1rem; font-weight: 400; color: #B91C1C; font-style: italic; letter-spacing: 0.05em; }
-    .logo-solutions { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: #555555; font-style: italic; letter-spacing: 0.18em; margin-top: 1px; align-self: center; }
+    .logo-brad { font-family: 'Barlow Condensed', sans-serif; font-size: 2.9rem; font-weight: 700; color: #B91C1C; letter-spacing: 0.05em; text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC; }
+    .logo-leigh { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 400; color: #B91C1C; font-style: italic; letter-spacing: 0.05em; }
+    .logo-solutions { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #555555; font-style: italic; letter-spacing: 0.18em; margin-top: 1px; align-self: center; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { color: var(--mid-text); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--red); }
@@ -150,7 +150,7 @@
       <div style="width:40px;height:40px;background:var(--red-bg);border:1px solid rgba(185,28,28,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📋</div>
       <div>
         <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-text);">Quote Form</div>
-        <div style="font-size:0.95rem;color:var(--mid-text);">Fill out the form below</div>
+        <div style="font-size:0.95rem;color:var(--red);font-weight:600;">Fill out the form below</div>
       </div>
     </div>
   </div>
@@ -171,21 +171,29 @@
         </div>
         <div class="form-group">
           <label>Are you a...</label>
-          <select id="customerType">
+          <select id="customerType" onchange="toggleOtherBox('customerType', 'customerTypeOtherBox', 'Other')">
             <option value="">Select one</option>
             <option>Car Dealership</option>
             <option>Fleet / Corporate</option>
             <option>Other</option>
           </select>
         </div>
+        <div class="form-group" id="customerTypeOtherBox" style="display:none;">
+          <label>Please Explain</label>
+          <input type="text" id="customerTypeOther" placeholder="Tell us a bit more" />
+        </div>
         <div class="form-divider">Shipment Details</div>
         <div class="form-row">
           <div class="form-group">
             <label>Number of Vehicles <span class="required">*</span></label>
-            <select id="numVehicles">
+            <select id="numVehicles" onchange="toggleOtherBox('numVehicles', 'numVehiclesOtherBox', '7+')">
               <option value="">Select one</option>
               <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option>
             </select>
+            <div class="form-group" id="numVehiclesOtherBox" style="display:none;margin-top:10px;margin-bottom:0;">
+              <label>Please Specify Number</label>
+              <input type="number" id="numVehiclesOther" min="7" placeholder="e.g. 9" />
+            </div>
           </div>
           <div class="form-group">
             <label>Type of Shipment <span class="required">*</span></label>
@@ -237,7 +245,7 @@
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🇨🇦</div>
-          <div class="contact-item-text"><strong>Based In</strong>Canada</div>
+          <div class="contact-item-text"><strong>Based In</strong><span style="color:var(--red);font-weight:600;">Canada</span></div>
         </div>
       </div>
       <div class="sidebar-block">
@@ -260,14 +268,20 @@
       <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <div class="footer-info">
-      &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
-      📞 1-877-232-7235 &nbsp;|&nbsp; info@bradleigh.ca<br />
+      &copy; 2026 BradLeigh Solutions Ltd. All rights reserved.<br />
+      📞 1-877-232-7235 &nbsp;|&nbsp; 587-487-2029 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
+      21-26004 TWP RD 544, Sturgeon County, AB T8T 0B6<br />
       bradleighsolutions.com
     </div>
   </footer>
 
   <script>
+    function toggleOtherBox(selectId, boxId, triggerValue) {
+      const select = document.getElementById(selectId);
+      const box = document.getElementById(boxId);
+      box.style.display = (select.value === triggerValue) ? 'block' : 'none';
+    }
     function handleSubmit() {
       const required = ['firstName', 'lastName', 'email', 'numVehicles', 'shipmentType', 'pickupLocation', 'pickupCountry', 'deliveryLocation', 'deliveryCountry'];
       let allGood = true;
@@ -280,8 +294,16 @@
       const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value || 'Not provided';
-      const customerType = document.getElementById('customerType').value || 'Not specified';
-      const numVehicles = document.getElementById('numVehicles').value;
+      let customerType = document.getElementById('customerType').value || 'Not specified';
+      if (customerType === 'Other') {
+        const otherText = document.getElementById('customerTypeOther').value;
+        if (otherText.trim()) customerType += ' (' + otherText.trim() + ')';
+      }
+      let numVehicles = document.getElementById('numVehicles').value;
+      if (numVehicles === '7+') {
+        const otherNum = document.getElementById('numVehiclesOther').value;
+        if (otherNum.trim()) numVehicles = otherNum.trim();
+      }
       const shipment = document.getElementById('shipmentType').value;
       const pickup = document.getElementById('pickupLocation').value;
       const pickupCountry = document.getElementById('pickupCountry').value;
