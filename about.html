@@ -174,6 +174,18 @@
       font-weight: 700 !important;
     }
 
+    /* ── PAGE HERO (matches Services page treatment) ── */
+    .page-hero { margin-top: 72px; position: relative; height: 420px; overflow: hidden; display: flex; align-items: flex-end; }
+    .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.35) 100%); }
+    .page-hero-content { position: relative; z-index: 2; padding: 48px; }
+    .page-hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555555; margin-bottom: 20px; text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF; }
+    .page-hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--dark-text); max-width: 700px; }
+    .page-hero-title .accent { color: var(--red); }
+    .page-hero-desc { margin-top: 14px; font-size: 1rem; color: var(--mid-text); max-width: 520px; line-height: 1.7; }
+    .page-hero-phone { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; background: #2C2C2C; color: var(--white); text-decoration: none; padding: 14px 28px; border-radius: 3px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.05em; transition: background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: fit-content; }
+    .page-hero-phone:hover { background: #3D3D3D; }
+
     /* ── STORY SECTION ── */
     .story {
       padding: 80px 48px;
@@ -443,6 +455,8 @@
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .page-hero { height: 320px; }
+      .page-hero-content { padding: 32px 24px; }
       .story { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
       .values { padding: 60px 24px; }
       .team { padding: 60px 24px; }
@@ -487,14 +501,14 @@
   </div>
 
   <!-- PAGE HERO WITH PHOTO -->
-  <div style="margin-top:72px;position:relative;height:420px;overflow:hidden;display:flex;align-items:flex-end;">
-    <img src="images/truck-black-sunny.jpg" alt="BradLeigh Solutions truck on a sunny day" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;" />
-    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.05) 100%);"></div>
-    <div style="position:relative;z-index:2;padding:48px;">
-      <p style="font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;font-style:italic;color:#EDEDED;margin-bottom:10px;text-shadow:0 2px 6px rgba(0,0,0,0.7);">Our Story</p>
-      <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;line-height:1;color:#FFFFFF;max-width:700px;text-shadow:0 2px 8px rgba(0,0,0,0.5);">Built on Experience.<br />Driven by Trust.</h1>
-      <p style="margin-top:14px;font-size:1rem;color:rgba(255,255,255,0.9);max-width:520px;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,0.5);">BradLeigh Solutions is an Alberta based vehicle transport company with over a decade on the road and a team that genuinely cares about the work they do.</p>
-      <a href="tel:18772327235" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:#B91C1C;border:none;color:#FFFFFF;text-decoration:none;padding:14px 28px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:0.05em;transition:background 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.3);">📞 1-877-232-7235</a>
+  <div class="page-hero">
+    <img src="images/truck-black-sunny.jpg" alt="BradLeigh Solutions truck on a sunny day" />
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">Our Story</p>
+      <h1 class="page-hero-title">Built on Experience.<br /><span class="accent">Driven by Trust.</span></h1>
+      <p class="page-hero-desc">BradLeigh Solutions is an Alberta based vehicle transport company with over a decade on the road and a team that genuinely cares about the work they do.</p>
+      <a href="tel:18772327235" class="page-hero-phone">📞 1-877-232-7235</a>
     </div>
   </div>
 
