@@ -48,10 +48,13 @@
 
     .page-hero { margin-top: 72px; position: relative; height: 460px; overflow: hidden; display: flex; align-items: flex-end; }
     .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
-    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.05) 100%); }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.35) 100%); }
     .page-hero-content { position: relative; z-index: 2; padding: 48px; width: 100%; }
-    .page-hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; font-style: italic; color: #EDEDED; margin-bottom: 10px; text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
-    .page-hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--white); max-width: 700px; }
+    .page-hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555555; margin-bottom: 20px; }
+    .page-hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; text-transform: uppercase; line-height: 1; color: var(--dark-text); max-width: 700px; }
+    .page-hero-title .accent { color: var(--red); }
+    .page-hero-phone { margin-top: 20px; display: inline-flex; align-items: center; gap: 10px; background: #2C2C2C; color: var(--white); text-decoration: none; padding: 14px 28px; border-radius: 3px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.05em; transition: background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: fit-content; }
+    .page-hero-phone:hover { background: #3D3D3D; }
 
     .service-block { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
     .service-block.reverse { direction: rtl; }
@@ -127,16 +130,17 @@
   </div>
 
   <div class="page-hero">
-    <img src="images/truck-haulers-face-off.jpg" alt="Two BradLeigh Solutions car haulers loaded and facing off at golden hour" />
+    <img src="images/truck-sunset.jpg" alt="BradLeigh Solutions car hauler at sunset" />
     <div class="page-hero-overlay"></div>
     <div class="page-hero-content">
       <p class="page-hero-eyebrow">What We Do</p>
-      <h1 class="page-hero-title">Professional Vehicle Transport.<br />Canada &amp; USA.</h1>
+      <h1 class="page-hero-title">Professional Vehicle Transport.<br /><span class="accent">Canada &amp; USA.</span></h1>
+      <a href="tel:18772327235" class="page-hero-phone">📞 1-877-232-7235</a>
     </div>
   </div>
 
   <div class="service-block">
-    <div class="service-photo"><"images/truck-loaded-dusk.jpg" alt="BradLeigh car hauler in the Canadian Rockies" /></div>
+    <div class="service-photo"><img src="images/truck-loaded-dusk.jpg" alt="BradLeigh Solutions car hauler loaded with vehicles at dusk" /></div>
     <div class="service-content">
       <p class="service-eyebrow">Domestic Transport</p>
       <h2 class="service-title">Vehicle Transport Across Canada</h2>
