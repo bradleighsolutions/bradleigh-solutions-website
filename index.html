@@ -36,16 +36,16 @@
     .nav-logo { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
     .logo-line1 { display: flex; align-items: baseline; }
     .logo-brad {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 2.9rem; font-weight: 700;
       color: #B91C1C; letter-spacing: 0.05em;
       text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC;
     }
     .logo-leigh {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 2.1rem; font-weight: 400;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 400;
       color: #B91C1C; font-style: italic; letter-spacing: 0.05em;
     }
     .logo-solutions {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
       color: #555555; font-style: italic; letter-spacing: 0.18em; margin-top: 1px; align-self: center;
     }
 
@@ -99,8 +99,9 @@
     .hero > *:not(.hero-bg):not(.hero-overlay) { position: relative; z-index: 2; }
 
     .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-text); margin-bottom: 20px;
+      font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; font-style: italic;
+      color: #555555; margin-bottom: 20px;
     }
     .hero-headline {
       font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem);
@@ -148,8 +149,9 @@
     /* ── SERVICES ── */
     .services { padding: 100px 48px; background: var(--bg-light); }
     .section-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-text); margin-bottom: 12px;
+      font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; font-style: italic;
+      color: #555555; margin-bottom: 12px;
     }
     .section-title {
       font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
@@ -167,7 +169,13 @@
       background: var(--red); transition: height 0.3s ease;
     }
     .service-card:hover::before { height: 100%; }
-    .service-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+    .service-icon-wrap {
+      width: 44px; height: 44px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-text); transition: color 0.2s;
+    }
+    .service-icon-wrap svg { width: 30px; height: 30px; }
+    .service-card:hover .service-icon-wrap { color: var(--red); }
     .service-title {
       font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.04em; color: var(--dark-text); margin-bottom: 12px;
@@ -272,6 +280,7 @@
       Car hauling across Canada and into the United States, done right.
     </p>
     <a href="tel:18772327235" class="hero-phone">📞 1-877-232-7235</a>
+    <p style="margin-top:10px;font-size:0.9rem;color:var(--mid-text);">Local: <a href="tel:5874872029" style="color:var(--dark-text);font-weight:600;text-decoration:none;">587-487-2029</a></p>
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-number">11<span>+</span></div>
@@ -295,19 +304,38 @@
     <div class="services-grid">
 
       <div class="service-card">
-        <span class="service-icon">🚗</span>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13"/>
+            <path d="M3 13h18v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"/>
+            <circle cx="7" cy="17" r="1.5"/>
+            <circle cx="17" cy="17" r="1.5"/>
+          </svg>
+        </div>
         <div class="service-title">Vehicle Transport — Canada</div>
         <p class="service-desc">Nationwide car hauling across all Canadian provinces. Dealerships, fleet relocations, and commercial customers. If it rolls, we move it.</p>
       </div>
 
       <div class="service-card">
-        <span class="service-icon">🇺🇸</span>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
         <div class="service-title">Cross-Border to the USA</div>
-        <p class="service-desc">Licensed and compliant cross-border vehicle transport into the United States. We handle the paperwork so you don't have to.</p>
+        <p class="service-desc">Licensed and compliant cross-border vehicle transport into the United States. USDOT certified and ready to move your vehicles across the border.</p>
       </div>
 
       <div class="service-card">
-        <span class="service-icon">🤝</span>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l1-5h16l1 5"/>
+            <path d="M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/>
+            <path d="M5 9v10h14V9"/>
+            <path d="M10 19v-5h4v5"/>
+          </svg>
+        </div>
         <div class="service-title">Dealership Services</div>
         <p class="service-desc">Reliable transport partnerships for car dealerships across Canada. Consistent, professional, and built around your schedule.</p>
       </div>
@@ -323,6 +351,7 @@
       <p>We have been moving vehicles across Canada and across the border for over 11 years. When you hand over the keys, you deserve to know exactly where your vehicle is going and that it is in good hands getting there.</p>
       <ul class="why-list">
         <li>Fully licensed for cross-border USA transport (USDOT, MC, FMCSA)</li>
+        <li>Fully insured and registered</li>
         <li>Serving dealerships and fleet customers nationwide</li>
         <li>Specialists in vehicle transport across Canada and into the USA</li>
         <li>Experienced drivers who know the routes and the regulations</li>
@@ -353,7 +382,7 @@
   <section class="cta-strip" id="contact">
     <div class="cta-strip-text">
       <div class="cta-strip-title">Ready to Move Your Vehicle?</div>
-      <div class="cta-strip-sub">Call us at 1-877-232-7235 or get a quote online.</div>
+      <div class="cta-strip-sub">Call us at 1-877-232-7235 (local: 587-487-2029) or get a quote online.</div>
     </div>
     <a href="contact.html" class="btn-white">Get a Quote</a>
   </section>
@@ -366,7 +395,7 @@
     </a>
     <div class="footer-info">
       &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
-      📞 1-877-232-7235 &nbsp;|&nbsp; info@bradleigh.ca<br />
+      📞 1-877-232-7235 &nbsp;|&nbsp; 587-487-2029 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
       bradleighsolutions.com
     </div>
