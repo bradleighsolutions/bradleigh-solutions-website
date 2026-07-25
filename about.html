@@ -61,7 +61,7 @@
     }
     .logo-brad {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.9rem;
       font-weight: 700;
       color: #B91C1C;
       text-shadow: -1px -1px 0 #B0B7BC, 1px -1px 0 #B0B7BC, -1px 1px 0 #B0B7BC, 1px 1px 0 #B0B7BC;
@@ -69,7 +69,7 @@
     }
     .logo-leigh {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.1rem;
+      font-size: 2.5rem;
       font-weight: 400;
       color: #B91C1C;
       font-style: italic;
@@ -77,7 +77,7 @@
     }
     .logo-solutions {
       font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #555555;
       font-style: italic;
@@ -185,12 +185,13 @@
     }
 
     .section-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--red);
+      font-style: italic;
+      color: #555555;
       margin-bottom: 12px;
     }
 
@@ -308,48 +309,46 @@
       margin-top: 48px;
     }
 
-    .team-card {
+    .team-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .team-group {
       background: var(--bg-light);
       border: 1px solid var(--border);
       padding: 32px 28px;
-      text-align: center;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .team-card:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-      transform: translateY(-3px);
     }
 
-    .team-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--red-bg);
-      border: 2px solid var(--red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
+    .team-group-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--dark-text);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--red);
     }
 
-    .team-name {
+    .team-name-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .team-name-chip {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 20px;
       font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--dark-text);
-      margin-bottom: 4px;
-    }
-
-    .team-role {
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--red);
-      font-weight: 600;
     }
 
     .team-driver-note {
@@ -365,6 +364,16 @@
       gap: 16px;
     }
     .team-driver-note span { font-size: 1.5rem; }
+    .team-driver-note-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+    }
+    .team-driver-note-icon svg { width: 30px; height: 30px; }
 
     /* ── QUOTE STRIP ── */
     .quote-strip {
@@ -494,15 +503,15 @@
     <div class="story-content">
       <p class="section-eyebrow">Where It All Started</p>
       <h2 class="section-title">29 Years in the Making</h2>
-      <p>BradLeigh Solutions was founded by Cam Watt, a trucking industry veteran with over 29 years of hands on experience building and operating transport businesses across Western Canada. Long before BradLeigh, Cam was already managing fleets, serving commercial customers province wide, and developing the operational expertise that comes only from years of doing the work himself.</p>
-      <p>That deep industry foundation translated directly into BradLeigh Solutions, which Cam established over 11 years ago to serve the growing demand for professional vehicle and car hauling services across Canada and into the United States. From day one, the focus has been simple: show up, do the job right, and be the kind of company people can count on.</p>
+      <p>BradLeigh Solutions was built by a team of trucking industry veterans with a combined 50+ years of hands on experience moving vehicles across Western Canada and beyond. This is a team driven company, built on a foundation of solid, real world experience, and a simple promise behind every load: we treat your vehicle like it is our own.</p>
+      <p>That deep industry foundation translated directly into BradLeigh Solutions Ltd. and was established over 11 years ago to serve the growing demand for professional vehicle and car hauling services across Canada and into the United States. From day one, the focus has been simple: show up, do the job right, and be the kind of company people can count on.</p>
       <p>Based in Alberta and licensed to operate on both sides of the border, BradLeigh has grown into a trusted name for dealerships, fleet operators, and commercial customers who need vehicles moved safely, efficiently, and on time.</p>
     </div>
 
     <div class="story-stats">
       <div class="story-stat">
-        <div class="story-stat-num">20+</div>
-        <div class="story-stat-label">Years in Trucking</div>
+        <div class="story-stat-num">50+</div>
+        <div class="story-stat-label">Years Combined Experience</div>
       </div>
       <div class="story-stat">
         <div class="story-stat-num">11+</div>
@@ -549,50 +558,66 @@
         <p class="value-desc">We take pride in doing more than what is expected. If there is a better way to get something done for our customers, we will find it.</p>
       </div>
 
+      <div class="value-card">
+        <span class="value-icon">🔧</span>
+        <div class="value-title">In-House Maintenance</div>
+        <p class="value-desc">We maintain, repair, and service our own fleet, so every truck on the road is looked after by people who know it best.</p>
+      </div>
+
     </div>
   </section>
 
   <!-- TEAM -->
   <section class="team">
-    <p class="section-eyebrow">The People Behind the Trucks</p>
+    <p class="section-eyebrow">The People Behind the Name</p>
     <h2 class="section-title">Meet the Team</h2>
 
-    <div class="team-grid">
+    <div class="team-groups">
 
-      <div class="team-card">
-        <div class="team-avatar">CW</div>
-        <div class="team-name">Cam Watt</div>
-        <div class="team-role">Owner</div>
+      <div class="team-group">
+        <div class="team-group-title">Office Team</div>
+        <div class="team-name-list">
+          <span class="team-name-chip">Cam</span>
+          <span class="team-name-chip">Michael</span>
+          <span class="team-name-chip">Anita</span>
+          <span class="team-name-chip">Pam</span>
+          <span class="team-name-chip">Paula</span>
+        </div>
       </div>
 
-      <div class="team-card">
-        <div class="team-avatar">PW</div>
-        <div class="team-name">Paula Watt</div>
-        <div class="team-role">Operations &amp; Business Development</div>
+      <div class="team-group">
+        <div class="team-group-title">Shop Team</div>
+        <div class="team-name-list">
+          <span class="team-name-chip">Adam</span>
+          <span class="team-name-chip">Nenad</span>
+          <span class="team-name-chip">Kyle</span>
+          <span class="team-name-chip">Nolan</span>
+        </div>
       </div>
 
-      <div class="team-card">
-        <div class="team-avatar">PP</div>
-        <div class="team-name">Pam Parsons</div>
-        <div class="team-role">Office Manager</div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">AM</div>
-        <div class="team-name">Anita Moore</div>
-        <div class="team-role">Accounts Receivable</div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">MG</div>
-        <div class="team-name">Michael Gruber</div>
-        <div class="team-role">Lead Driver &amp; Dispatcher</div>
+      <div class="team-group">
+        <div class="team-group-title">Drivers</div>
+        <div class="team-name-list">
+          <span class="team-name-chip">Samuel</span>
+          <span class="team-name-chip">Taite</span>
+          <span class="team-name-chip">Duncan</span>
+          <span class="team-name-chip">Brett</span>
+          <span class="team-name-chip">Scott</span>
+          <span class="team-name-chip">Mike</span>
+        </div>
       </div>
 
     </div>
 
     <div class="team-driver-note">
-      <span>🚛</span>
+      <div class="team-driver-note-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 16V6a1 1 0 0 1 1-1h11v11H2a1 1 0 0 1-1-1z"/>
+          <path d="M13 9h4l3 3v4h-7z"/>
+          <circle cx="6" cy="18" r="2"/>
+          <circle cx="17" cy="18" r="2"/>
+        </svg>
+      </div>
       <p>Behind every load is a team of experienced drivers who take pride in what they do. Our drivers are the backbone of BradLeigh Solutions and they bring the same commitment to professionalism and care to every run.</p>
     </div>
 
@@ -600,15 +625,15 @@
 
   <!-- QUOTE STRIP -->
   <div class="quote-strip">
-    <p class="quote-text">"It is <span>family oriented</span> and they care about the people. That is why I love working here."</p>
-    <p class="quote-attr">Michael Gruber, Lead Driver &amp; Dispatcher</p>
+    <p class="quote-text">"BradLeigh Solutions is <span>family oriented</span> and they care about the people. That is why I love working here."</p>
+    <p class="quote-attr">Michael</p>
   </div>
 
   <!-- CTA -->
   <section class="cta-strip">
     <div>
       <div class="cta-strip-title">Ready to Work With Us?</div>
-      <div class="cta-strip-sub">Get a fast, no-obligation quote today.</div>
+      <div class="cta-strip-sub">Get a fast, no-obligation quote today. Call 1-877-232-7235 or 587-487-2029.</div>
     </div>
     <a href="contact.html" class="btn-white">Get a Quote</a>
   </section>
@@ -622,8 +647,8 @@
       <div class="logo-solutions">Solutions Ltd.</div>
     </a>
     <div class="footer-info">
-      &copy; 2025 BradLeigh Solutions Ltd. All rights reserved.<br />
-      📞 1-877-232-7235 &nbsp;|&nbsp; info@bradleigh.ca<br />
+      &copy; 2026 BradLeigh Solutions Ltd. All rights reserved.<br />
+      📞 1-877-232-7235 &nbsp;|&nbsp; 587-487-2029 &nbsp;|&nbsp; info@bradleigh.ca<br />
       USDOT: 2834168 &nbsp;|&nbsp; MC: MC-947908<br />
       bradleighsolutions.com
     </div>
