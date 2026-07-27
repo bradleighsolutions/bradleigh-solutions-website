@@ -114,16 +114,12 @@
 
     /* Phone number in hero */
     .hero-phone {
-      margin-top: 20px;
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #2C2C2C; color: var(--white); text-decoration: none;
-      padding: 14px 28px; border-radius: 3px;
-      font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700;
-      letter-spacing: 0.05em; transition: background 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: fit-content;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--mid-text); text-decoration: none;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.02em; transition: color 0.2s;
     }
-    .hero-phone:hover { background: #3D3D3D; }
+    .hero-phone:hover { color: var(--red); }
 
     .hero-actions { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
     .btn-primary {
@@ -281,8 +277,13 @@
       We transport dealership inventory, fleet vehicles, commercial vehicles, 
       and privately owned vehicles throughout Canada and across the United States.
     </p>
-    <a href="tel:18772327235" class="hero-phone">📞 1-877-232-7235</a>
-    <p style="margin-top:10px;font-size:0.9rem;color:var(--mid-text);">Local: <a href="tel:5874872029" style="color:var(--dark-text);font-weight:600;text-decoration:none;">587-487-2029</a></p>
+    <div class="hero-actions">
+      <a href="contact.html#quoteForm" class="btn-primary">Request a Quote</a>
+    </div>
+    <div style="margin-top:16px;">
+      <a href="tel:18772327235" class="hero-phone">📞 1-877-232-7235</a>
+      <p style="margin-top:6px;font-size:0.85rem;color:var(--light-text);">Local: <a href="tel:5874872029" style="color:var(--mid-text);font-weight:600;text-decoration:none;">587-487-2029</a></p>
+    </div>
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-number">11<span>+</span></div>
