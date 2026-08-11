@@ -329,6 +329,10 @@
       const notes = document.getElementById('notes').value || 'None';
       const subject = encodeURIComponent('Quote Request from ' + name);
       const body = encodeURIComponent('QUOTE REQUEST\n====================\n\nNAME: ' + name + '\nEMAIL: ' + email + '\nPHONE: ' + phone + '\nCUSTOMER TYPE: ' + customerType + '\n\nNUMBER OF VEHICLES: ' + numVehicles + '\nSHIPMENT TYPE: ' + shipment + '\n\nPICKUP: ' + pickup + ', ' + pickupCountry + '\nDELIVERY: ' + delivery + ', ' + deliveryCountry + '\nPREFERRED DATE: ' + date + '\n\nNOTES: ' + notes);
+      gtag('event', 'quote_email_start', {
+  'method': 'mailto',
+  'form_location': 'contact_page'
+});
       window.location.href = 'mailto:info@bradleighsolutions.com?subject=' + subject + '&body=' + body;
       document.getElementById('successMsg').style.display = 'block';
       document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
