@@ -14,6 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get a Quote | BradLeigh Solutions Ltd.</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -87,6 +88,8 @@
     .btn-submit:hover { background: var(--red-lt); transform: translateY(-1px); }
     .form-note { font-size: 0.78rem; color: var(--light-text); margin-top: 12px; text-align: center; }
     .success-msg { display: none; background: #EDF7ED; border: 1px solid #A8D5A8; border-radius: 4px; padding: 20px 24px; margin-top: 20px; font-size: 0.9rem; color: #2E6B2E; }
+    .error-msg { display: none; background: var(--red-bg); border: 1px solid rgba(185,28,28,0.3); border-radius: 4px; padding: 20px 24px; margin-top: 20px; font-size: 0.9rem; color: var(--red); }
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none !important; }
 
     .contact-sidebar { background: var(--bg-light); border-left: 1px solid var(--border); padding: 64px 40px; display: flex; flex-direction: column; gap: 40px; }
     .sidebar-block h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark-text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--red); display: inline-block; }
@@ -239,9 +242,11 @@
         </div>
         <div class="form-group"><label>Preferred Pickup Date</label><input type="date" id="pickupDate" /></div>
         <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything else we should know about your shipment?"></textarea></div>
-        <button class="btn-submit" onclick="handleSubmit()">Send My Quote Request</button>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEOXLBKxwTi1M90i" style="margin-top:8px;margin-bottom:16px;"></div>
+        <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Send My Quote Request</button>
         <p class="form-note">We typically respond within 1 business day.</p>
         <div class="success-msg" id="successMsg">Thanks! We have received your quote request and will be in touch shortly at the email you provided.</div>
+        <div class="error-msg" id="errorMsg"></div>
       </div>
     </div>
 
@@ -298,7 +303,7 @@
       const box = document.getElementById(boxId);
       box.style.display = (select.value === triggerValue) ? 'block' : 'none';
     }
-    function handleSubmit() {
+    async function handleSubmit() {
       const required = ['firstName', 'lastName', 'email', 'numVehicles', 'shipmentType', 'pickupLocation', 'pickupCountry', 'deliveryLocation', 'deliveryCountry'];
       let allGood = true;
       required.forEach(id => {
@@ -307,9 +312,13 @@
         else { el.style.borderColor = ''; el.style.background = ''; }
       });
       if (!allGood) { alert('Please fill in all required fields marked with an asterisk.'); return; }
-      const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value || 'Not provided';
+
+      const turnstileField = document.querySelector('[name="cf-turnstile-response"]');
+      if (!turnstileField || !turnstileField.value) {
+        alert('Please complete the verification check above the submit button.');
+        return;
+      }
+
       let customerType = document.getElementById('customerType').value || 'Not specified';
       if (customerType === 'Other') {
         const otherText = document.getElementById('customerTypeOther').value;
@@ -320,22 +329,54 @@
         const otherNum = document.getElementById('numVehiclesOther').value;
         if (otherNum.trim()) numVehicles = otherNum.trim();
       }
-      const shipment = document.getElementById('shipmentType').value;
-      const pickup = document.getElementById('pickupLocation').value;
-      const pickupCountry = document.getElementById('pickupCountry').value;
-      const delivery = document.getElementById('deliveryLocation').value;
-      const deliveryCountry = document.getElementById('deliveryCountry').value;
-      const date = document.getElementById('pickupDate').value || 'Flexible';
-      const notes = document.getElementById('notes').value || 'None';
-      const subject = encodeURIComponent('Quote Request from ' + name);
-      const body = encodeURIComponent('QUOTE REQUEST\n====================\n\nNAME: ' + name + '\nEMAIL: ' + email + '\nPHONE: ' + phone + '\nCUSTOMER TYPE: ' + customerType + '\n\nNUMBER OF VEHICLES: ' + numVehicles + '\nSHIPMENT TYPE: ' + shipment + '\n\nPICKUP: ' + pickup + ', ' + pickupCountry + '\nDELIVERY: ' + delivery + ', ' + deliveryCountry + '\nPREFERRED DATE: ' + date + '\n\nNOTES: ' + notes);
-      gtag('event', 'quote_email_start', {
-  'method': 'mailto',
-  'form_location': 'contact_page'
-});
-      window.location.href = 'mailto:info@bradleighsolutions.com?subject=' + subject + '&body=' + body;
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
+
+      const payload = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value || 'Not provided',
+        customerType: customerType,
+        numVehicles: numVehicles,
+        shipmentType: document.getElementById('shipmentType').value,
+        pickupLocation: document.getElementById('pickupLocation').value,
+        pickupCountry: document.getElementById('pickupCountry').value,
+        deliveryLocation: document.getElementById('deliveryLocation').value,
+        deliveryCountry: document.getElementById('deliveryCountry').value,
+        pickupDate: document.getElementById('pickupDate').value || 'Flexible',
+        notes: document.getElementById('notes').value || 'None',
+        'cf-turnstile-response': turnstileField.value
+      };
+
+      const submitBtn = document.getElementById('submitBtn');
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('/api/quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          gtag('event', 'quote_submitted', { 'method': 'form', 'form_location': 'contact_page' });
+          submitBtn.textContent = 'Request Sent';
+          document.getElementById('successMsg').style.display = 'block';
+          document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
+        } else {
+          throw new Error(result.error || 'Submission failed');
+        }
+      } catch (err) {
+        errorMsg.textContent = "Something went wrong sending your request. Please try again, or email us directly at info@bradleighsolutions.com.";
+        errorMsg.style.display = 'block';
+        errorMsg.scrollIntoView({ behavior: 'smooth' });
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send My Quote Request';
+        if (window.turnstile) window.turnstile.reset();
+      }
     }
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
