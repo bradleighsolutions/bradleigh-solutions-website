@@ -54,17 +54,17 @@ export async function onRequestPost(context) {
     // 3. Partner routing list
     // Add a new partner here any time you sign one on. That's the only
     // change needed, no new pages, no new code elsewhere.
-    // Example:
-    //   riverside: { name: 'Riverside Auctions', email: 'contact@riversideauctions.com' }
     const partners = {
-      // add partners here
+      'direct-auction': { name: 'Direct Auction', email: '' } // TODO: add Amanda Booth's email once you have it
     };
 
     const recipients = ['info@bradleighsolutions.com'];
     let partnerLabel = '';
     if (data.ref && partners[data.ref]) {
-      recipients.push(partners[data.ref].email);
       partnerLabel = ' (via ' + partners[data.ref].name + ')';
+      if (partners[data.ref].email) {
+        recipients.push(partners[data.ref].email);
+      }
     }
 
     // 4. Build the email
