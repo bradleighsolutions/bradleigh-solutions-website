@@ -55,7 +55,7 @@ export async function onRequestPost(context) {
     // Add a new partner here any time you sign one on. That's the only
     // change needed, no new pages, no new code elsewhere.
     const partners = {
-      'bidline-auctions': { name: 'Bidline Auctions', email: 'amandab@bidlineauctions.ca' }
+      'direct-auction': { name: 'Direct Auction', email: '' } // TODO: add Amanda Booth's email once you have it
     };
 
     const recipients = ['info@bradleighsolutions.com'];
@@ -80,13 +80,15 @@ export async function onRequestPost(context) {
       '',
       `NUMBER OF VEHICLES: ${data.numVehicles}`,
       `SHIPMENT TYPE: ${data.shipmentType}`,
+      data.lotNumber ? `LOT NUMBER: ${data.lotNumber}` : null,
+      data.inventoryNumber ? `INVENTORY NUMBER: ${data.inventoryNumber}` : null,
       '',
       `PICKUP: ${data.pickupLocation}, ${data.pickupCountry}`,
       `DELIVERY: ${data.deliveryLocation}, ${data.deliveryCountry}`,
       `PREFERRED DATE: ${data.pickupDate || 'Flexible'}`,
       '',
       `NOTES: ${data.notes || 'None'}`
-    ].join('\n');
+    ].filter(line => line !== null).join('\n');
 
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
