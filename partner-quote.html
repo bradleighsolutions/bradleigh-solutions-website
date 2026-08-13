@@ -227,6 +227,11 @@
             </select>
           </div>
         </div>
+        <div class="form-divider">Auction Details</div>
+        <div class="form-row">
+          <div class="form-group"><label>Lot Number</label><input type="text" id="lotNumber" placeholder="e.g. L-4521" /></div>
+          <div class="form-group"><label>Inventory Number</label><input type="text" id="inventoryNumber" placeholder="e.g. INV-98213" /></div>
+        </div>
         <div class="form-divider">Pickup &amp; Delivery</div>
         <div class="form-row">
           <div class="form-group"><label>Pickup City / Province <span class="required">*</span></label><input type="text" id="pickupLocation" placeholder="e.g. Calgary, AB" /></div>
@@ -357,6 +362,8 @@
         customerType: customerType,
         numVehicles: numVehicles,
         shipmentType: document.getElementById('shipmentType').value,
+        lotNumber: document.getElementById('lotNumber').value || '',
+        inventoryNumber: document.getElementById('inventoryNumber').value || '',
         pickupLocation: document.getElementById('pickupLocation').value,
         pickupCountry: document.getElementById('pickupCountry').value,
         deliveryLocation: document.getElementById('deliveryLocation').value,
