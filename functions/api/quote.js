@@ -55,7 +55,7 @@ export async function onRequestPost(context) {
     // Add a new partner here any time you sign one on. That's the only
     // change needed, no new pages, no new code elsewhere.
     const partners = {
-      'direct-auction': { name: 'Direct Auction', email: '' } // TODO: add Amanda Booth's email once you have it
+      'bidline-auctions': { name: 'Bidline Auctions', email: 'amandab@bidlineauctions.ca' } // TODO: add Amanda Booth's email once you have it
     };
 
     const recipients = ['info@bradleighsolutions.com'];
