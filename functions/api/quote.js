@@ -107,6 +107,41 @@ export async function onRequestPost(context) {
       return jsonResponse({ success: false, error: 'Could not send email right now.' }, 502);
     }
 
+    // 5. Send a confirmation email back to the customer
+    // If this one fails for some reason, we don't want it to block the
+    // success response, your team already got their copy above.
+    try {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'BradLeigh Solutions <quotes@send.bradleighsolutions.com>',
+          to: [data.email],
+          reply_to: 'info@bradleighsolutions.com',
+          subject: 'We received your quote request',
+          text: [
+            `Hi ${data.firstName},`,
+            '',
+            'Thanks for reaching out to BradLeigh Solutions. We have received your quote request and one of our team members will be in touch within 1 business day.',
+            '',
+            'Here is a copy of what you submitted:',
+            `Pickup: ${data.pickupLocation}, ${data.pickupCountry}`,
+            `Delivery: ${data.deliveryLocation}, ${data.deliveryCountry}`,
+            `Number of vehicles: ${data.numVehicles}`,
+            '',
+            'If you have any questions in the meantime, feel free to call us at 1-877-232-7235.',
+            '',
+            'BradLeigh Solutions Ltd.'
+          ].join('\n')
+        })
+      });
+    } catch (confirmErr) {
+      // Silently ignore, the main notification already succeeded
+    }
+
     return jsonResponse({ success: true }, 200);
 
   } catch (err) {
